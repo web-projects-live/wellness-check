@@ -9,7 +9,6 @@
 /* ====== SETUP: edit these three lines ====== */
 const NTFY_URL   = "https://ntfy.sh/ens-2gqIIsH24xR4arHSYwhuh1oV"; // public ntfy.sh with a random private topic
 const NTFY_TOKEN = "";   // optional: a write-only access token (tk_...) for that topic; leave "" for none
-const NAME       = "Joel";
 // Supabase: totals only, insert-only table (nobody can read it with these keys)
 const SB_URL     = "https://zskqjwwcyczezouglzmi.supabase.co";
 const SB_KEY     = "sb_publishable_PHSU2XfYkdnbAR1mZ8IC8A_TWKIXChx";
@@ -69,22 +68,20 @@ let step=-1;
 
 const TX={
  zh:{title:"每周小问卷",intro:"这份问卷帮助我们看看你是不是在一点点变好。大约需要"+(SET==="full"?"5分钟":"1分钟")+"。",
-  priv:"你的每一题答案只留在你的手机上，不会被保存，也不会发给任何人。只有三个总分会被记录，给"+NAME+"看你的变化。",
-  alert:"有一题问到伤害自己的念头。如果那一题不是“完全不会”，"+NAME+"会收到一条“请联系她”的提醒，但看不到你的答案。",
+  priv:"你的每一题答案只留在你的手机上，不会被保存，也不会发给任何人。只会记录三个总分，并在需要时发送一条联系你的提醒。",
   start:"开始",back:"上一题",send:"提交",sending:"正在提交…",
   done:"提交好了，谢谢你 ❤️",doneSub:"你今天又为自己做了一件好事。",
-  fail:"没有发送成功。请把这个页面截图发给"+NAME+"，截图里只有总分。",retry:"再试一次",
+  fail:"没有发送成功。请把这个页面截图发给发你链接的人，截图里只有总分。",retry:"再试一次",
   scores:"你的总分",gad:"焦虑",phq:"情绪",ens:"鼻部症状",
-  help:"谢谢你诚实地回答。你不是一个人。现在就可以打心理援助热线 12356，紧急情况拨打 120。也可以直接给"+NAME+"发消息。",
+  help:"谢谢你诚实地回答。你不是一个人。现在就可以打心理援助热线 12356，紧急情况拨打 120。也可以联系发你链接的人或你信任的人。",
   of:"第 {a} 题，共 {b} 题"},
  en:{title:"Weekly check-in",intro:"This helps us see whether you're getting a little better. It takes about "+(SET==="full"?"5 minutes":"1 minute")+".",
-  priv:"Your answers stay on your phone. They are not saved or sent to anyone. Only the total scores are recorded, so "+NAME+" can see how you're doing.",
-  alert:"One question asks about thoughts of hurting yourself. If that answer is not \"Not at all\", "+NAME+" gets a \"please check in\" alert, but never sees your answer.",
+  priv:"Your answers stay on your phone and are not saved or sent to anyone. Only three total scores will be recorded, and a notice to contact you as needed.",
   start:"Start",back:"Back",send:"Submit",sending:"Submitting…",
   done:"Submitted. Thank you ❤️",doneSub:"You did something good for yourself today.",
-  fail:"It didn't send. Please screenshot this page and send it to "+NAME+". The screenshot only shows totals.",retry:"Try again",
+  fail:"It didn't send. Please screenshot this page and send it to the person who shared this link. The screenshot only shows totals.",retry:"Try again",
   scores:"Your totals",gad:"Anxiety",phq:"Mood",ens:"Nose symptoms",
-  help:"Thank you for answering honestly. You are not alone. You can call the psychological assistance hotline 12356 now, or 120 in an emergency. You can also message "+NAME+" directly.",
+  help:"Thank you for answering honestly. You are not alone. You can call the psychological assistance hotline 12356 now, or 120 in an emergency. You can also reach out to the person who shared this link, or someone you trust.",
   of:"Question {a} of {b}"}
 };
 const $=document.getElementById("app");
@@ -95,7 +92,7 @@ function flag(){const k=Qs.findIndex(q=>q.g==="phq"&&q.i===8);return k>=0&&A[k]>
 
 function render(){
  const t=TX[L];
- if(step===-1){$.innerHTML=hdr(0)+`<h1>${t.intro}</h1><div class="note">${t.priv}</div>${SET==="full"?`<div class="note">${t.alert}</div>`:""}<button class="btn" id="go">${t.start}</button>`;
+ if(step===-1){$.innerHTML=hdr(0)+`<h1>${t.intro}</h1><div class="note">${t.priv}</div><button class="btn" id="go">${t.start}</button>`;
   bindLang();document.getElementById("go").onclick=()=>{step=0;render()};return}
  if(step<Qs.length){const q=Qs[step],src=q.g==="gad"?GAD:q.g==="phq"?PHQ:ENS;
   let h=hdr(Math.round(step/Qs.length*100))+`<div class="stem">${t.of.replace("{a}",step+1).replace("{b}",Qs.length)} · ${STEM[q.g][L]}</div><div class="q">${src[L][q.i]}</div>`;
