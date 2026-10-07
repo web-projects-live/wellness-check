@@ -4,152 +4,485 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <meta name="robots" content="noindex, nofollow">
-<title>每周小问卷</title>
-<script>
-/* ====== SETUP: edit these three lines ====== */
-const NTFY_URL   = "https://ntfy.sh/ens-2gqIIsH24xR4arHSYwhuh1oV"; // public ntfy.sh with a random private topic
-const NTFY_TOKEN = "";   // optional: a write-only access token (tk_...) for that topic; leave "" for none
-// Supabase: totals only, insert-only table (nobody can read it with these keys)
-const SB_URL     = "https://zskqjwwcyczezouglzmi.supabase.co";
-const SB_KEY     = "sb_publishable_PHSU2XfYkdnbAR1mZ8IC8A_TWKIXChx";
-const SB_LEGACY  = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Inpza3Fqd3djeWN6ZXpvdWdsem1pIiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODEyMDMzMDEsImV4cCI6MjA5Njc3OTMwMX0.ofebeGhucWa6G7MpoUIyJhthK2CnK8PPkAPINg7HW7s";
-</script>
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="default">
+<meta name="apple-mobile-web-app-title" content="小猪加油">
+<meta name="theme-color" content="#FFF3F7" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#1E1519" media="(prefers-color-scheme: dark)">
+<link rel="apple-touch-icon" href="data:image/png;base64,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">
+<link rel="icon" href="data:image/png;base64,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">
+<title>小猪加油</title>
 <style>
-:root{--bg:#EEF4F2;--card:#fff;--ink:#16343A;--muted:#5C7377;--line:#CFDDDA;--tide:#3E8E85;--tide-soft:#DCEEEA;--sun:#E9A93B;
-  box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
-@media (prefers-color-scheme:dark){:root{--bg:#0F1E21;--card:#17292D;--ink:#E3EFEC;--muted:#93AAAD;--line:#2A4247;--tide:#5FB3A8;--tide-soft:#1F3A3A;--sun:#F0B84F}}
-*,*::before,*::after{box-sizing:inherit}
+:root{
+  --bg:#FFF3F7;--card:#FFFFFF;--ink:#3B2530;--muted:#8E6F7C;--line:#F6D9E3;
+  --pink:#FF7FA8;--pink-soft:#FFE1EB;--mint:#3FB59B;--mint-soft:#DDF5EE;--gold:#F5B640;--gold-soft:#FFF1D2;--lilac:#9B87E8;
+  --shadow:0 6px 18px rgba(214,99,140,.12);
+  box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);
+}
+@media (prefers-color-scheme:dark){:root{
+  --bg:#1E1519;--card:#2A1E24;--ink:#F8E9EF;--muted:#BFA2AE;--line:#3D2C34;
+  --pink:#FF8FB3;--pink-soft:#46262F;--mint:#56C9AE;--mint-soft:#1F3A33;--gold:#F7C25A;--gold-soft:#3D3220;--lilac:#B3A3F0;--shadow:none}}
+*,*::before,*::after{box-sizing:inherit;-webkit-tap-highlight-color:transparent}
 html,body{height:100%}
-body{margin:0;background:var(--bg);color:var(--ink);font-family:"PingFang SC","Microsoft YaHei","Noto Sans SC",system-ui,sans-serif;font-size:18px;line-height:1.6}
-.wrap{max-width:560px;margin:0 auto;padding:20px 18px 40px;min-height:100%;display:flex;flex-direction:column}
-.top{display:flex;justify-content:space-between;align-items:center;color:var(--muted);font-size:.9rem}
-.lang{all:unset;cursor:pointer;border:1px solid var(--line);border-radius:20px;padding:4px 12px}
-.bar{height:6px;background:var(--line);border-radius:3px;margin:14px 0 22px;overflow:hidden}
-.bar i{display:block;height:100%;background:var(--tide);transition:width .3s}
-h1{font-size:1.5rem;line-height:1.3;margin:6px 0 12px}
-.q{font-size:1.25rem;line-height:1.5;margin:4px 0 20px}
-.stem{color:var(--muted);font-size:.95rem}
-.opt{all:unset;box-sizing:border-box;display:block;width:100%;cursor:pointer;background:var(--card);border:1.5px solid var(--line);border-radius:12px;padding:14px 16px;margin:0 0 10px}
-.opt.on{border-color:var(--tide);background:var(--tide-soft)}
-.opt:focus-visible,.btn:focus-visible,.lang:focus-visible{outline:3px solid var(--sun);outline-offset:2px}
-.btn{all:unset;box-sizing:border-box;cursor:pointer;display:block;text-align:center;width:100%;padding:14px;border-radius:12px;background:var(--tide);color:#fff;font-weight:600;margin-top:14px}
-.btn.ghost{background:transparent;color:var(--muted);border:1px solid var(--line)}
-.note{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:14px 16px;font-size:.95rem;margin:12px 0}
-.help{border-left:4px solid var(--sun)}
-.scores{font-size:1.1rem}
-@media (prefers-reduced-motion:reduce){.bar i{transition:none}}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:-apple-system,"PingFang SC","Hiragino Sans GB","Noto Sans SC",system-ui,sans-serif;font-size:17px;line-height:1.5;-webkit-font-smoothing:antialiased;overscroll-behavior-y:contain}
+button{font:inherit;color:inherit}
+.wrap{max-width:520px;margin:0 auto;padding:12px 16px calc(96px + env(safe-area-inset-bottom,0px))}
+.top{display:flex;align-items:center;gap:14px;padding:8px 0 4px}
+.pig{width:68px;height:68px;flex:none;position:relative}
+.pig svg{width:100%;height:100%;display:block}
+.pig .lv{position:absolute;right:-6px;bottom:-4px;background:var(--gold);color:#3B2530;font-size:.72rem;font-weight:800;border-radius:10px;padding:1px 7px;border:2px solid var(--bg)}
+.hello h1{font-size:1.45rem;line-height:1.2;margin:0}
+.hello .sub{color:var(--muted);font-size:.9rem}
+.lang{all:unset;margin-left:auto;align-self:flex-start;font-size:.8rem;color:var(--muted);border:1px solid var(--line);border-radius:14px;padding:3px 10px;cursor:pointer}
+.xp{margin:12px 0 4px;display:flex;align-items:center;gap:10px;font-size:.85rem;color:var(--muted)}
+.xpbar{flex:1;height:10px;border-radius:6px;background:var(--pink-soft);overflow:hidden}
+.xpbar i{display:block;height:100%;background:linear-gradient(90deg,var(--pink),var(--gold));border-radius:6px;transition:width .6s cubic-bezier(.2,.9,.3,1.3)}
+.chips{display:flex;gap:8px;margin:8px 0 14px;flex-wrap:wrap}
+.chip{background:var(--card);border-radius:14px;padding:6px 12px;font-size:.88rem;box-shadow:var(--shadow);border:1px solid var(--line)}
+.card{background:var(--card);border-radius:22px;padding:16px;margin:0 0 14px;box-shadow:var(--shadow);border:1px solid var(--line)}
+.note{background:linear-gradient(135deg,var(--pink-soft),var(--card))}
+.note .from{font-size:.8rem;color:var(--muted);margin-bottom:4px}
+.note p{margin:0 0 10px;font-size:1.02rem}
+.hug{all:unset;cursor:pointer;background:var(--pink);color:#fff;border-radius:16px;padding:9px 16px;font-weight:700;font-size:.95rem}
+.hug:active{transform:scale(.96)}
+h2{font-size:1.1rem;margin:4px 0 10px;display:flex;align-items:center;gap:8px}
+h2 .count{margin-left:auto;font-size:.9rem;color:var(--muted);font-weight:600}
+.ring{width:22px;height:22px}
+.task{all:unset;box-sizing:border-box;cursor:pointer;display:flex;align-items:center;gap:12px;width:100%;min-height:64px;padding:12px 14px;margin:0 0 10px;border-radius:18px;background:var(--bg);border:2px solid transparent;transition:transform .15s,background .25s,border-color .25s;position:relative}
+.task:active{transform:scale(.98)}
+.task .em{font-size:1.6rem;width:36px;text-align:center;flex:none}
+.task .tx{flex:1;font-size:1rem;line-height:1.35}
+.task .tx small{display:block;color:var(--muted);font-size:.78rem;margin-top:2px}
+.task .ck{width:30px;height:30px;border-radius:50%;border:2.5px solid var(--line);flex:none;display:grid;place-items:center;font-size:1rem;color:#fff;transition:all .25s}
+.task.done{background:var(--mint-soft);border-color:var(--mint)}
+.task.done .tx{color:var(--muted);text-decoration:line-through;text-decoration-color:var(--mint)}
+.task.done .ck{background:var(--mint);border-color:var(--mint)}
+.task.pop{animation:pop .45s cubic-bezier(.2,.9,.3,1.5)}
+@keyframes pop{0%{transform:scale(1)}40%{transform:scale(1.05)}100%{transform:scale(1)}}
+.float{position:fixed;pointer-events:none;font-weight:800;color:var(--pink);font-size:1.1rem;animation:up 1s ease-out forwards;z-index:60}
+@keyframes up{to{transform:translateY(-60px);opacity:0}}
+.tomorrow{text-align:center;color:var(--muted);font-size:.88rem;padding:6px 0 4px}
+.treatday{display:flex;align-items:center;gap:12px;background:var(--gold-soft);border-radius:18px;padding:12px 14px}
+.treatday .em{font-size:1.8rem}
+.btn{all:unset;box-sizing:border-box;cursor:pointer;display:block;width:100%;text-align:center;background:var(--pink);color:#fff;font-weight:800;border-radius:18px;padding:15px;font-size:1.05rem;min-height:52px}
+.btn.alt{background:var(--card);color:var(--ink);border:1.5px solid var(--line)}
+.btn.mint{background:var(--mint)}
+.btn:active{transform:scale(.98)}
+.btn[disabled]{opacity:.5}
+.survey{background:linear-gradient(135deg,#EDE7FF,var(--card))}
+@media (prefers-color-scheme:dark){.survey{background:linear-gradient(135deg,#2E2747,var(--card))}}
+/* tabs */
+.tabs{position:fixed;left:0;right:0;bottom:0;background:color-mix(in srgb,var(--card) 88%,transparent);backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);border-top:1px solid var(--line);display:flex;justify-content:space-around;padding:8px 8px calc(8px + env(safe-area-inset-bottom,0px));z-index:30}
+.tabs button{all:unset;cursor:pointer;display:flex;flex-direction:column;align-items:center;gap:2px;font-size:.72rem;color:var(--muted);padding:4px 14px;border-radius:12px;min-width:64px}
+.tabs button .ti{font-size:1.45rem;line-height:1}
+.tabs button[aria-selected="true"]{color:var(--pink);font-weight:700}
+/* badges */
+.grid{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}
+.badge{background:var(--bg);border-radius:18px;padding:12px 6px;text-align:center;font-size:.78rem;line-height:1.3;border:1.5px solid var(--line)}
+.badge .b{font-size:2rem;display:block;margin-bottom:4px}
+.badge.locked{opacity:.45;filter:grayscale(1)}
+.badge.new{border-color:var(--gold);animation:pop .6s}
+.stat{display:flex;justify-content:space-between;padding:8px 0;border-top:1px solid var(--line);font-size:.95rem}
+.stat:first-of-type{border-top:0}
+/* treats */
+.tlist{display:flex;flex-direction:column;gap:8px}
+.titem{display:flex;align-items:center;gap:12px;padding:10px 12px;border-radius:16px;background:var(--bg)}
+.titem .em{font-size:1.5rem;width:32px;text-align:center}
+.titem .by{margin-left:auto;font-size:.75rem;color:var(--muted)}
+.row{display:flex;gap:8px}
+input[type=text],textarea{font:inherit;font-size:16px;color:var(--ink);background:var(--bg);border:1.5px solid var(--line);border-radius:14px;padding:12px;width:100%}
+textarea{min-height:80px;resize:vertical}
+/* sheet + overlay */
+.scrim{position:fixed;inset:0;background:rgba(40,15,25,.45);z-index:40;display:none}
+.scrim.on{display:block}
+.sheet{position:fixed;left:0;right:0;bottom:0;max-height:92vh;overflow:auto;background:var(--card);border-radius:26px 26px 0 0;z-index:50;padding:10px 18px calc(18px + env(safe-area-inset-bottom,0px));transform:translateY(105%);transition:transform .35s cubic-bezier(.2,.9,.3,1)}
+.sheet.on{transform:none}
+.grab{width:44px;height:5px;border-radius:3px;background:var(--line);margin:4px auto 12px}
+.q{margin:0 0 16px}
+.q .ql{font-weight:700;margin-bottom:8px}
+.opts{display:flex;gap:8px;flex-wrap:wrap}
+.opt{all:unset;cursor:pointer;min-width:52px;min-height:46px;padding:0 12px;border-radius:14px;background:var(--bg);border:2px solid var(--line);display:grid;place-items:center;font-size:1rem}
+.opt.face{font-size:1.6rem}
+.opts .opt{min-width:0;padding:0 4px;justify-content:center}
+.opt.on{border-color:var(--pink);background:var(--pink-soft);font-weight:700}
+.party{position:fixed;inset:0;z-index:70;display:none;align-items:center;justify-content:center;padding:24px;background:rgba(255,236,243,.92)}
+@media (prefers-color-scheme:dark){.party{background:rgba(30,21,25,.94)}}
+.party.on{display:flex}
+.party .box{max-width:420px;width:100%;text-align:center}
+.party .bigpig{width:120px;height:120px;margin:0 auto;animation:bounce 1s ease-in-out infinite}
+@keyframes bounce{0%,100%{transform:translateY(0) rotate(-3deg)}50%{transform:translateY(-14px) rotate(3deg)}}
+.party h3{font-size:1.5rem;margin:12px 0 4px}
+.party .tchoice{display:flex;flex-direction:column;gap:10px;margin:16px 0}
+.party .tchoice button{all:unset;cursor:pointer;display:flex;align-items:center;gap:12px;background:var(--card);border-radius:18px;padding:14px;border:2px solid var(--line);text-align:left;font-size:1rem}
+.party .tchoice button:active{border-color:var(--pink)}
+.party .tchoice .em{font-size:1.7rem}
+.hearts{position:fixed;inset:0;pointer-events:none;z-index:80;overflow:hidden}
+.heart{position:absolute;bottom:-40px;font-size:1.8rem;animation:rise 2.4s ease-in forwards}
+@keyframes rise{to{transform:translateY(-110vh) rotate(25deg);opacity:0}}
+canvas#cf{position:fixed;inset:0;pointer-events:none;z-index:75}
+.toast{position:fixed;left:50%;top:calc(14px + env(safe-area-inset-top,0px));transform:translate(-50%,-140%);background:var(--ink);color:var(--bg);padding:10px 16px;border-radius:16px;font-size:.92rem;z-index:90;transition:transform .35s;max-width:90vw;text-align:center}
+.toast.on{transform:translate(-50%,0)}
+.center{text-align:center;color:var(--muted);padding:40px 10px}
+.help{background:var(--gold-soft);border-radius:16px;padding:12px;margin:12px 0;font-size:.95rem}
+.prog{height:6px;border-radius:3px;background:var(--pink-soft);margin:6px 0 14px;overflow:hidden}
+.prog i{display:block;height:100%;background:var(--lilac);transition:width .3s}
+:focus-visible{outline:3px solid var(--gold);outline-offset:2px}
+@media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
 </style>
 </head>
 <body>
-<div class="wrap" id="app"></div>
+<div class="wrap" id="app"><div class="center">🐷 …</div></div>
+<nav class="tabs" id="tabs" role="tablist" hidden>
+  <button role="tab" data-t="today" aria-selected="true"><span class="ti">🐷</span><span data-l="tab_today">今天</span></button>
+  <button role="tab" data-t="badges" aria-selected="false"><span class="ti">🏅</span><span data-l="tab_badges">成就</span></button>
+  <button role="tab" data-t="treats" aria-selected="false"><span class="ti">🎁</span><span data-l="tab_treats">奖励</span></button>
+</nav>
+<div class="scrim" id="scrim"></div>
+<div class="sheet" id="sheet" role="dialog" aria-modal="true"></div>
+<div class="party" id="party" role="dialog" aria-modal="true"></div>
+<canvas id="cf"></canvas>
+<div class="hearts" id="hearts"></div>
+<div class="toast" id="toast" role="status"></div>
 <script>
-const P=new URLSearchParams(location.search);
-const SET=P.get("s")==="ens"?"ens":"full";
-const CP=P.get("cp")||"baseline";
-let L="zh";
+"use strict";
+const SB_URL="https://zskqjwwcyczezouglzmi.supabase.co";
+const SB_KEY="sb_publishable_PHSU2XfYkdnbAR1mZ8IC8A_TWKIXChx";
+const SB_LEGACY="eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Inpza3Fqd3djeWN6ZXpvdWdsem1pIiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODEyMDMzMDEsImV4cCI6MjA5Njc3OTMwMX0.ofebeGhucWa6G7MpoUIyJhthK2CnK8PPkAPINg7HW7s";
+const NTFY_URL="https://ntfy.sh/ens-2gqIIsH24xR4arHSYwhuh1oV";
 
+/* ---------- key ---------- */
+let KEY=null;
+try{const k=new URLSearchParams(location.search).get("k");if(k){localStorage.setItem("pp_key",k);KEY=k}else KEY=localStorage.getItem("pp_key")}catch(e){KEY=new URLSearchParams(location.search).get("k")}
+let L="zh";try{L=localStorage.getItem("pp_lang")||"zh"}catch(e){}
+
+/* ---------- words ---------- */
+const W={
+ zh:{tab_today:"今天",tab_badges:"成就",tab_treats:"奖励",day:"第 {n} 天",of30:"共30天",streak:"🔥 连续 {n} 天",xp:"{x} XP",lv:"Lv.{n}",
+  note_from:"今天想对你说",hug:"🫂 发个抱抱",hug_sent:"抱抱已经发出去啦💕",tasks:"今天的小事",tomorrow:"明天的任务会在明天早上出现哦 🌙",
+  ck_title:"晚上打卡",ck_priv:"这是我们俩一起看的，看看你一天天的变化 💕 问卷每一题的答案只有你自己知道。",ck_func:"今天整体感觉能做到平时的多少？",ck_sleep:"昨晚睡了多久？",ck_panic:"今天惊恐发作几次？",ck_mood:"心情",ck_nose:"鼻子舒服吗？",ck_note:"今天想跟我说点什么吗？（可选）",ck_save:"打卡 ✨",ck_done:"打卡完成！",
+  party_title:"今天全部完成！",party_sub:"你真的太棒了，我为你骄傲 🐷💕",pick:"选一个今天的奖励：",own:"我有别的想法…",own_ph:"比如：一起看电影",add:"加上",later:"等一下再选",
+  treat_today:"今天的奖励",enjoy:"好好享受吧 🐷",treats_title:"奖励清单",treats_sub:"完成一整天的任务，就从这里选一个。也可以加上你自己的想法！",mine:"我的想法",history:"选过的奖励",
+  badges_title:"小猪成就",stats:"我的进步",s_tasks:"完成的小事",s_days:"满分的天数",s_checkins:"打卡次数",s_streak:"最长连续",
+  survey_t:"每周小问卷",survey_s:"大约 {m} 分钟。帮我们看看你是不是在一点点变好。",survey_go:"开始",
+  priv:"每一题的答案只留在你的手机上，不会被保存。只会记录三个总分，并在需要时发送一条联系你的提醒。",
+  back:"上一题",submit:"提交",thanks:"谢谢你 ❤️ 提交好了",helpline:"谢谢你诚实地回答。你不是一个人。现在就可以打心理援助热线 12356，紧急情况拨打 120。也可以马上告诉我。",
+  net:"网络不太好，再试一次哦",nolink:"请用我发给你的链接打开这个页面 🐷",newbadge:"新成就！",close:"好的",
+  faces:["😣","🙁","😐","🙂","😊"],qof:"第 {a} / {b} 题"},
+ en:{tab_today:"Today",tab_badges:"Badges",tab_treats:"Treats",day:"Day {n}",of30:"of 30",streak:"🔥 {n}-day streak",xp:"{x} XP",lv:"Lv.{n}",
+  note_from:"A note for you today",hug:"🫂 Send a hug",hug_sent:"Hug sent 💕",tasks:"Today's small things",tomorrow:"Tomorrow's tasks appear tomorrow morning 🌙",
+  ck_title:"Evening check-in",ck_priv:"This is for both of us, so we can see how you're doing day by day 💕 Your questionnaire answers stay yours alone.",ck_func:"Overall, how much of a normal day could you do?",ck_sleep:"How long did you sleep last night?",ck_panic:"Panic attacks today?",ck_mood:"Mood",ck_nose:"How comfortable is your nose?",ck_note:"Anything you want to tell me today? (optional)",ck_save:"Check in ✨",ck_done:"Checked in!",
+  party_title:"All done today!",party_sub:"You're amazing, I'm so proud of you 🐷💕",pick:"Pick today's treat:",own:"I have another idea…",own_ph:"e.g. watch a movie together",add:"Add",later:"Pick later",
+  treat_today:"Today's treat",enjoy:"Enjoy it 🐷",treats_title:"Treat list",treats_sub:"Finish a whole day and pick one from here. Add your own ideas too!",mine:"My idea",history:"Treats you picked",
+  badges_title:"Piggy badges",stats:"My progress",s_tasks:"Small things done",s_days:"Full days",s_checkins:"Check-ins",s_streak:"Longest streak",
+  survey_t:"Weekly check-in",survey_s:"About {m} min. It helps us see whether you're getting a little better.",survey_go:"Start",
+  priv:"Your answers stay on your phone and aren't saved. Only three total scores are recorded, plus a notice to contact you if needed.",
+  back:"Back",submit:"Submit",thanks:"Thank you ❤️ All sent",helpline:"Thank you for answering honestly. You're not alone. You can call the psychological assistance hotline 12356 now, or 120 in an emergency. You can also tell me right away.",
+  net:"The connection is weak, try again",nolink:"Please open this page with the link I sent you 🐷",newbadge:"New badge!",close:"OK",
+  faces:["😣","🙁","😐","🙂","😊"],qof:"Question {a} of {b}"}
+};
+const t=(k,v)=>{let s=(W[L][k]??W.zh[k]??k);if(v)for(const x in v)s=s.split("{"+x+"}").join(v[x]);return s};
+const esc=s=>String(s??"").replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
+
+/* ---------- default plan (used only if no plan was published for a day) ---------- */
+const LIB={wake:["☀️","固定时间起床，晒5分钟太阳","Same wake-up time, then 5 min of daylight"],breathe5:["🌬️","呼吸练习5分钟，早晚各一次","Long-exhale breathing, 5 min, twice"],
+ walk10:["🚶","轻松散步5到10分钟","Gentle walk, 5 to 10 min"],humid:["💧","卧室开加湿器，每餐喝一杯水","Humidifier on, water with every meal"],
+ meds:["💊","按医嘱服药","Medicines exactly as prescribed"],checkin:["📝","晚上打卡（在这里点几下就好）","Evening check-in (just a few taps here)"]};
+const DEFAULT_IDS=["meds","wake","breathe5","walk10","humid","checkin"];
+const defaultTasks=()=>DEFAULT_IDS.map(id=>({id,emoji:LIB[id][0],zh:LIB[id][1],en:LIB[id][2]}));
+
+/* ---------- surveys ---------- */
+const CPS=[{id:"baseline",day:1,t:"full"},{id:"day7",day:7,t:"ens"},{id:"day14",day:14,t:"full"},{id:"day21",day:21,t:"ens"},{id:"day28",day:28,t:"full"}];
 const OPT4={zh:["完全不会","好几天","一半以上的天数","几乎每天"],en:["Not at all","Several days","More than half the days","Nearly every day"]};
 const OPT6={zh:["没有问题","非常轻微","轻微","中等","严重","最严重"],en:["No problem","Very mild","Mild","Moderate","Severe","As bad as it can be"]};
-const GAD={zh:["感觉紧张、焦虑或烦躁","不能够停止或控制担忧","对各种各样的事情担忧过多","很难放松下来","由于不安而无法静坐","变得容易烦恼或急躁","感到似乎将有可怕的事情发生而害怕"],
- en:["Feeling nervous, anxious or on edge","Not being able to stop or control worrying","Worrying too much about different things","Trouble relaxing","Being so restless that it's hard to sit still","Becoming easily annoyed or irritable","Feeling afraid, as if something awful might happen"]};
-const PHQ={zh:["做事时提不起劲或没有兴趣","感到心情低落、沮丧或绝望","入睡困难、睡不安稳或睡眠过多","感觉疲倦或没有活力","食欲不振或吃太多","觉得自己很糟，或觉得自己很失败，或让自己或家人失望","对事物专注有困难，例如阅读报纸或看电视时","动作或说话速度缓慢到别人已经察觉？或者相反，烦躁或坐立不安、动来动去的情况比平常更多","有不如死掉或用某种方式伤害自己的念头"],
- en:["Little interest or pleasure in doing things","Feeling down, depressed or hopeless","Trouble falling or staying asleep, or sleeping too much","Feeling tired or having little energy","Poor appetite or overeating","Feeling bad about yourself, or that you are a failure or have let yourself or your family down","Trouble concentrating, such as reading the newspaper or watching television","Moving or speaking so slowly that others could notice, or the opposite, being so fidgety or restless that you move around much more than usual","Thoughts that you would be better off dead, or of hurting yourself in some way"]};
-const ENS={zh:["鼻腔干燥","感觉鼻腔气流减少","窒息感","感觉鼻子太通、太空","鼻腔结痂","鼻腔灼热感"],
- en:["Nasal dryness","Sense of diminished nasal airflow","Suffocation","Nose feels too open","Nasal crusting","Nasal burning"]};
-const STEM={gad:{zh:"过去两周，以下问题困扰你的频率：",en:"Over the last 2 weeks, how often have you been bothered by:"},
- phq:{zh:"过去两周，以下问题困扰你的频率：",en:"Over the last 2 weeks, how often have you been bothered by:"},
- ens:{zh:"最近一周，以下鼻部症状有多严重：",en:"In the past week, how severe has this nose symptom been:"}};
+const GAD={zh:["感觉紧张、焦虑或烦躁","不能够停止或控制担忧","对各种各样的事情担忧过多","很难放松下来","由于不安而无法静坐","变得容易烦恼或急躁","感到似乎将有可怕的事情发生而害怕"],en:["Feeling nervous, anxious or on edge","Not being able to stop or control worrying","Worrying too much about different things","Trouble relaxing","Being so restless that it's hard to sit still","Becoming easily annoyed or irritable","Feeling afraid, as if something awful might happen"]};
+const PHQ={zh:["做事时提不起劲或没有兴趣","感到心情低落、沮丧或绝望","入睡困难、睡不安稳或睡眠过多","感觉疲倦或没有活力","食欲不振或吃太多","觉得自己很糟，或觉得自己很失败，或让自己或家人失望","对事物专注有困难，例如阅读报纸或看电视时","动作或说话速度缓慢到别人已经察觉？或者相反，烦躁或坐立不安、动来动去的情况比平常更多","有不如死掉或用某种方式伤害自己的念头"],en:["Little interest or pleasure in doing things","Feeling down, depressed or hopeless","Trouble falling or staying asleep, or sleeping too much","Feeling tired or having little energy","Poor appetite or overeating","Feeling bad about yourself, or that you are a failure or have let yourself or your family down","Trouble concentrating, such as reading the newspaper or watching television","Moving or speaking so slowly that others could notice, or the opposite, being so fidgety or restless that you move around much more than usual","Thoughts that you would be better off dead, or of hurting yourself in some way"]};
+const ENS={zh:["鼻腔干燥","感觉鼻腔气流减少","窒息感","感觉鼻子太通、太空","鼻腔结痂","鼻腔灼热感"],en:["Nasal dryness","Sense of diminished nasal airflow","Suffocation","Nose feels too open","Nasal crusting","Nasal burning"]};
+const STEM={gad:{zh:"过去两周，以下问题困扰你的频率：",en:"Over the last 2 weeks, how often have you been bothered by:"},phq:{zh:"过去两周，以下问题困扰你的频率：",en:"Over the last 2 weeks, how often have you been bothered by:"},ens:{zh:"最近一周，这个鼻部症状有多严重：",en:"In the past week, how severe has this nose symptom been:"}};
 
-const Qs=[];
-if(SET==="full"){GAD.zh.forEach((_,i)=>Qs.push({g:"gad",i,o:OPT4}));PHQ.zh.forEach((_,i)=>Qs.push({g:"phq",i,o:OPT4}))}
-ENS.zh.forEach((_,i)=>Qs.push({g:"ens",i,o:OPT6}));
-const A=new Array(Qs.length).fill(null); // answers stay in this page's memory only, never stored or sent
-let step=-1;
+/* ---------- achievements ---------- */
+const BADGES=[
+ {id:"first",e:"🐾",zh:"小猪出发",en:"First step",ok:s=>s.tasks>=1},
+ {id:"survey",e:"📊",zh:"勇敢开始",en:"Brave start",ok:s=>s.surveys>=1},
+ {id:"checkin1",e:"📝",zh:"第一次打卡",en:"First check-in",ok:s=>s.checkins>=1},
+ {id:"full1",e:"🌟",zh:"满分的一天",en:"A perfect day",ok:s=>s.fullDays>=1},
+ {id:"doctor",e:"🏥",zh:"勇敢看病",en:"Brave doctor visit",ok:s=>s.did.bring},
+ {id:"streak3",e:"🔥",zh:"连续3天",en:"3-day streak",ok:s=>s.best>=3},
+ {id:"calm",e:"🍃",zh:"平静的一天",en:"A calm day",ok:s=>s.calm>=1},
+ {id:"sleep",e:"😴",zh:"好梦小猪",en:"Sweet dreams",ok:s=>s.goodSleep>=1},
+ {id:"idea",e:"💡",zh:"点子王",en:"Idea queen",ok:s=>s.ideas>=1},
+ {id:"breath10",e:"🌬️",zh:"呼吸小达人",en:"Breathing pro",ok:s=>s.breath>=10},
+ {id:"walk5",e:"🚶",zh:"散步小猪",en:"Walking piggy",ok:s=>s.walks>=5},
+ {id:"streak7",e:"🏅",zh:"连续7天",en:"7-day streak",ok:s=>s.best>=7},
+ {id:"checkin7",e:"🗓️",zh:"打卡达人",en:"Check-in star",ok:s=>s.checkins>=7},
+ {id:"treat5",e:"🎁",zh:"奖励收藏家",en:"Treat collector",ok:s=>s.treats>=5},
+ {id:"full7",e:"👑",zh:"7个满分天",en:"7 perfect days",ok:s=>s.fullDays>=7},
+ {id:"streak14",e:"🌈",zh:"连续14天",en:"14-day streak",ok:s=>s.best>=14},
+ {id:"level5",e:"🐖",zh:"超级小猪",en:"Super piggy",ok:s=>s.level>=5},
+ {id:"day30",e:"🏆",zh:"30天完成",en:"30 days!",ok:s=>s.today>=30&&s.activeDays>=20}];
+const LEVELS={zh:["小猪宝宝","勇敢小猪","快乐小猪","闪亮小猪","超级小猪","小猪英雄","传奇小猪"],en:["Baby piggy","Brave piggy","Happy piggy","Shiny piggy","Super piggy","Piggy hero","Legendary piggy"]};
 
-const TX={
- zh:{title:"每周小问卷",intro:"这份问卷帮助我们看看你是不是在一点点变好。大约需要"+(SET==="full"?"5分钟":"1分钟")+"。",
-  priv:"你的每一题答案只留在你的手机上，不会被保存，也不会发给任何人。只会记录三个总分，并在需要时发送一条联系你的提醒。",
-  start:"开始",back:"上一题",send:"提交",sending:"正在提交…",
-  done:"提交好了，谢谢你 ❤️",doneSub:"你今天又为自己做了一件好事。",
-  fail:"没有发送成功。请把这个页面截图发给发你链接的人，截图里只有总分。",retry:"再试一次",
-  scores:"你的总分",gad:"焦虑",phq:"情绪",ens:"鼻部症状",
-  help:"谢谢你诚实地回答。你不是一个人。现在就可以打心理援助热线 12356，紧急情况拨打 120。也可以联系发你链接的人或你信任的人。",
-  of:"第 {a} 题，共 {b} 题"},
- en:{title:"Weekly check-in",intro:"This helps us see whether you're getting a little better. It takes about "+(SET==="full"?"5 minutes":"1 minute")+".",
-  priv:"Your answers stay on your phone and are not saved or sent to anyone. Only three total scores will be recorded, and a notice to contact you as needed.",
-  start:"Start",back:"Back",send:"Submit",sending:"Submitting…",
-  done:"Submitted. Thank you ❤️",doneSub:"You did something good for yourself today.",
-  fail:"It didn't send. Please screenshot this page and send it to the person who shared this link. The screenshot only shows totals.",retry:"Try again",
-  scores:"Your totals",gad:"Anxiety",phq:"Mood",ens:"Nose symptoms",
-  help:"Thank you for answering honestly. You are not alone. You can call the psychological assistance hotline 12356 now, or 120 in an emergency. You can also reach out to the person who shared this link, or someone you trust.",
-  of:"Question {a} of {b}"}
-};
-const $=document.getElementById("app");
-function hdr(p){return `<div class="top"><span>${TX[L].title}</span><button class="lang" id="lg">${L==="zh"?"English":"中文"}</button></div><div class="bar"><i style="width:${p}%"></i></div>`}
-function bindLang(){document.getElementById("lg").onclick=()=>{L=L==="zh"?"en":"zh";document.documentElement.lang=L==="zh"?"zh-CN":"en";render()}}
-function totals(){const s={gad:0,phq:0,ens:0};Qs.forEach((q,k)=>{s[q.g]+=A[k]||0});return s}
-function flag(){const k=Qs.findIndex(q=>q.g==="phq"&&q.i===8);return k>=0&&A[k]>0}
+/* ---------- api ---------- */
+async function rpc(fn,args){
+  const body=JSON.stringify(Object.assign({p_key:KEY},args||{}));
+  const url=SB_URL+"/rest/v1/rpc/"+fn;
+  let r=await fetch(url,{method:"POST",headers:{"apikey":SB_KEY,"Content-Type":"application/json"},body});
+  if(r.status===401){r=await fetch(url,{method:"POST",headers:{"apikey":SB_LEGACY,"Authorization":"Bearer "+SB_LEGACY,"Content-Type":"application/json"},body})}
+  if(!r.ok){const e=new Error("rpc "+r.status);e.status=r.status;throw e}
+  const txt=await r.text();return txt?JSON.parse(txt):null;
+}
+async function ping(title,msg,priority,tags){
+  try{await fetch(NTFY_URL+"?title="+encodeURIComponent(title)+"&priority="+(priority||3)+"&tags="+encodeURIComponent(tags||"pig"),{method:"POST",body:msg})}catch(e){}
+}
 
+/* ---------- state ---------- */
+let ST=null,TAB="today";
+function todayPlan(){const d=(ST.days||[]).find(x=>x.day===ST.today);return (d&&Array.isArray(d.tasks)&&d.tasks.length)?d.tasks:defaultTasks()}
+function todayNote(){const d=(ST.days||[]).find(x=>x.day===ST.today);return d?{zh:d.msg_zh,en:d.msg_en}:null}
+function doneSet(day){const s=new Set();(ST.task_log||[]).forEach(r=>{if(r.day===day&&r.done)s.add(r.task_id)});return s}
+function planFor(day){const d=(ST.days||[]).find(x=>x.day===day);return (d&&Array.isArray(d.tasks)&&d.tasks.length)?d.tasks:defaultTasks()}
+function stats(){
+  const s={tasks:0,fullDays:0,checkins:(ST.checkins||[]).length,surveys:(ST.scores_done||[]).filter(c=>CPS.some(x=>x.id===c)).length,
+    did:{},calm:0,goodSleep:0,ideas:(ST.treats||[]).filter(x=>x.added_by==="her").length,breath:0,walks:0,treats:(ST.treat_log||[]).length,best:0,cur:0,activeDays:0,today:ST.today};
+  (ST.checkins||[]).forEach(c=>{if(c.panic===0)s.calm++;if(c.sleep!=null&&+c.sleep>=7)s.goodSleep++});
+  const active=[];
+  for(let d=1;d<=ST.today;d++){
+    const plan=planFor(d),done=doneSet(d);let n=0;
+    plan.forEach(tk=>{if(done.has(tk.id)){n++;s.tasks++;s.did[tk.id.replace(/\d+$/,"")]=true;if(/^breathe/.test(tk.id))s.breath++;if(/^walk/.test(tk.id))s.walks++}});
+    if(n>0)s.activeDays++;
+    if(plan.length&&n===plan.length)s.fullDays++;
+    active.push(n>0);
+  }
+  let run=0;active.forEach(a=>{run=a?run+1:0;if(run>s.best)s.best=run});
+  let cur=0;for(let i=active.length-1;i>=0;i--){if(active[i])cur++;else if(i===active.length-1)continue;else break}
+  s.cur=cur;
+  s.xp=s.tasks*10+s.checkins*10+s.fullDays*30+s.surveys*20;
+  s.level=Math.floor(s.xp/100)+1;s.inLevel=s.xp%100;
+  return s;
+}
+
+/* ---------- pig svg ---------- */
+function pigSVG(mood){
+  const happy=mood!=="sleepy";
+  return `<svg viewBox="0 0 100 100" aria-hidden="true"><polygon points="18,30 26,8 40,24" fill="#FF8FB1"/><polygon points="82,30 74,8 60,24" fill="#FF8FB1"/>
+  <circle cx="50" cy="54" r="38" fill="#FF8FB1"/><ellipse cx="50" cy="64" rx="15" ry="10" fill="#FFB3C9"/>
+  <ellipse cx="44.5" cy="64" rx="2.6" ry="3.6" fill="#784050"/><ellipse cx="55.5" cy="64" rx="2.6" ry="3.6" fill="#784050"/>
+  ${happy?`<path d="M31 45 q4 -5 8 0" stroke="#784050" stroke-width="3" fill="none" stroke-linecap="round"/><path d="M61 45 q4 -5 8 0" stroke="#784050" stroke-width="3" fill="none" stroke-linecap="round"/>`:`<circle cx="35" cy="45" r="3" fill="#784050"/><circle cx="65" cy="45" r="3" fill="#784050"/>`}
+  <ellipse cx="25" cy="58" rx="6" ry="3.5" fill="#FF6F9C" opacity=".6"/><ellipse cx="75" cy="58" rx="6" ry="3.5" fill="#FF6F9C" opacity=".6"/></svg>`;
+}
+
+/* ---------- effects ---------- */
+function toast(msg){const el=document.getElementById("toast");el.textContent=msg;el.classList.add("on");clearTimeout(toast._t);toast._t=setTimeout(()=>el.classList.remove("on"),2200)}
+function floatXP(x,y,txt){const f=document.createElement("div");f.className="float";f.textContent=txt;f.style.left=(x-20)+"px";f.style.top=(y-20)+"px";document.body.appendChild(f);setTimeout(()=>f.remove(),1000)}
+function hearts(n,set){const h=document.getElementById("hearts");const pool=set||["💕","💗","🐷","💖","✨","🫂"];for(let i=0;i<(n||14);i++){const e=document.createElement("div");e.className="heart";e.textContent=pool[i%pool.length];e.style.left=(Math.random()*90+5)+"vw";e.style.animationDelay=(Math.random()*.6)+"s";e.style.fontSize=(1.3+Math.random()*1.2)+"rem";h.appendChild(e);setTimeout(()=>e.remove(),3200)}}
+function confetti(){
+  if(matchMedia("(prefers-reduced-motion: reduce)").matches)return;
+  const c=document.getElementById("cf"),x=c.getContext("2d"),dpr=Math.min(2,devicePixelRatio||1);
+  c.width=innerWidth*dpr;c.height=innerHeight*dpr;x.scale(dpr,dpr);
+  const cols=["#FF7FA8","#F5B640","#3FB59B","#9B87E8","#FFC2D6"];
+  const P=Array.from({length:120},()=>({x:innerWidth/2,y:innerHeight*.35,vx:(Math.random()-.5)*12,vy:Math.random()*-12-4,r:Math.random()*6+4,c:cols[Math.floor(Math.random()*cols.length)],a:Math.random()*6,s:Math.random()<.3}));
+  let f=0;(function tick(){x.clearRect(0,0,innerWidth,innerHeight);P.forEach(p=>{p.vy+=.35;p.x+=p.vx;p.y+=p.vy;p.a+=.2;x.save();x.translate(p.x,p.y);x.rotate(p.a);x.fillStyle=p.c;
+    if(p.s){x.beginPath();x.arc(0,0,p.r/1.6,0,7);x.fill()}else x.fillRect(-p.r/2,-p.r/4,p.r,p.r/2);x.restore()});if(++f<110)requestAnimationFrame(tick);else x.clearRect(0,0,innerWidth,innerHeight)})();
+}
+function buzz(){try{navigator.vibrate&&navigator.vibrate(12)}catch(e){}}
+
+/* ---------- render ---------- */
 function render(){
- const t=TX[L];
- if(step===-1){$.innerHTML=hdr(0)+`<h1>${t.intro}</h1><div class="note">${t.priv}</div><button class="btn" id="go">${t.start}</button>`;
-  bindLang();document.getElementById("go").onclick=()=>{step=0;render()};return}
- if(step<Qs.length){const q=Qs[step],src=q.g==="gad"?GAD:q.g==="phq"?PHQ:ENS;
-  let h=hdr(Math.round(step/Qs.length*100))+`<div class="stem">${t.of.replace("{a}",step+1).replace("{b}",Qs.length)} · ${STEM[q.g][L]}</div><div class="q">${src[L][q.i]}</div>`;
-  q.o[L].forEach((o,v)=>{h+=`<button class="opt${A[step]===v?" on":""}" data-v="${v}">${o}</button>`});
-  if(step>0)h+=`<button class="btn ghost" id="bk">${t.back}</button>`;
-  $.innerHTML=h;bindLang();
-  $.querySelectorAll(".opt").forEach(b=>b.onclick=()=>{A[step]=+b.dataset.v;step++;render()});
-  const bk=document.getElementById("bk");if(bk)bk.onclick=()=>{step--;render()};
-  const first=$.querySelector(".opt");if(first)first.focus({preventScroll:true});
-  return}
- // review + submit
- $.innerHTML=hdr(100)+`<h1>${L==="zh"?"都答完了":"All done"}</h1><button class="btn" id="sb">${t.send}</button><button class="btn ghost" id="bk">${t.back}</button>`;
- bindLang();document.getElementById("bk").onclick=()=>{step--;render()};document.getElementById("sb").onclick=submit;
+  const app=document.getElementById("app");
+  document.querySelectorAll("[data-l]").forEach(e=>e.textContent=t(e.dataset.l));
+  document.querySelectorAll(".tabs button").forEach(b=>b.setAttribute("aria-selected",String(b.dataset.t===TAB)));
+  if(TAB==="today")app.innerHTML=viewToday();else if(TAB==="badges")app.innerHTML=viewBadges();else app.innerHTML=viewTreats();
+  bind();checkNewBadges();
 }
-function authParam(){if(!NTFY_TOKEN)return"";return"&auth="+btoa("Bearer "+NTFY_TOKEN).replace(/\+/g,"-").replace(/\//g,"_").replace(/=+$/,"")}
-async function post(title,msg,priority,tags){
- // Simple POST with query parameters (no custom headers, so no CORS preflight)
- const u=NTFY_URL+"?title="+encodeURIComponent(title)+"&priority="+priority+"&tags="+encodeURIComponent(tags)+authParam();
- const r=await fetch(u,{method:"POST",body:msg});if(!r.ok)throw new Error("HTTP "+r.status);
+function header(s){
+  const lvName=LEVELS[L][Math.min(LEVELS[L].length-1,s.level-1)];
+  return `<div class="top"><div class="pig">${pigSVG()}<span class="lv">${t("lv",{n:s.level})}</span></div>
+   <div class="hello"><h1>${t("day",{n:Math.max(1,ST.today)})} <span style="font-size:.9rem;color:var(--muted);font-weight:500">${t("of30")}</span></h1><div class="sub">${esc(lvName)}</div></div>
+   <button class="lang" id="lang">${L==="zh"?"EN":"中文"}</button></div>
+   <div class="xp"><div class="xpbar"><i style="width:${s.inLevel}%"></i></div><span>${t("xp",{x:s.xp})}</span></div>
+   <div class="chips">${s.cur>0?`<span class="chip">${t("streak",{n:s.cur})}</span>`:""}<span class="chip">⭐ ${s.tasks}</span><span class="chip">🌟 ${s.fullDays}</span></div>`;
 }
-async function saveScores(s){
- const row={cp:CP.slice(0,32),set_type:SET,gad:SET==="full"?s.gad:null,phq:SET==="full"?s.phq:null,ens:s.ens};
- const url=SB_URL+"/rest/v1/checkin_scores";
- const body=JSON.stringify(row);
- let r=await fetch(url,{method:"POST",headers:{"apikey":SB_KEY,"Content-Type":"application/json","Prefer":"return=minimal"},body});
- if(r.status===401||r.status===403){ // fall back to the legacy anon key
-  r=await fetch(url,{method:"POST",headers:{"apikey":SB_LEGACY,"Authorization":"Bearer "+SB_LEGACY,"Content-Type":"application/json","Prefer":"return=minimal"},body});
- }
- if(!r.ok)throw new Error("save "+r.status);
+function dueSurvey(){const done=new Set(ST.scores_done||[]);return CPS.find(c=>ST.today>=c.day&&ST.today<c.day+7&&!done.has(c.id))}
+function viewToday(){
+  const s=stats(),plan=todayPlan(),done=doneSet(ST.today),note=todayNote(),cp=dueSurvey();
+  const n=plan.filter(x=>done.has(x.id)).length,all=plan.length&&n===plan.length;
+  const pick=(ST.treat_log||[]).filter(x=>x.day===ST.today).slice(-1)[0];const tr=pick&&(ST.treats||[]).find(x=>x.id===pick.treat_id);
+  let h=header(s);
+  if(note&&(note.zh||note.en))h+=`<div class="card note"><div class="from">${t("note_from")}</div><p>${esc(L==="zh"?note.zh:(note.en||note.zh))}</p><button class="hug" id="hug">${t("hug")}</button></div>`;
+  if(cp)h+=`<div class="card survey"><h2>📊 ${t("survey_t")}</h2><p style="margin:0 0 12px;color:var(--muted)">${t("survey_s",{m:cp.t==="full"?5:1})}</p><button class="btn" id="survey">${t("survey_go")}</button></div>`;
+  const pct=plan.length?Math.round(n/plan.length*100):0;
+  h+=`<div class="card"><h2>🐷 ${t("tasks")}<span class="count">${n} / ${plan.length}</span></h2><div class="prog"><i style="width:${pct}%"></i></div>`;
+  plan.forEach(tk=>{const d=done.has(tk.id);h+=`<button class="task${d?" done":""}" data-id="${esc(tk.id)}" aria-pressed="${d}"><span class="em">${esc(tk.emoji||"🐷")}</span><span class="tx">${esc(L==="zh"?tk.zh:(tk.en||tk.zh))}</span><span class="ck">${d?"✓":""}</span></button>`});
+  if(tr)h+=`<div class="treatday"><span class="em">${esc(tr.emoji||"🎁")}</span><div><div style="font-size:.8rem;color:var(--muted)">${t("treat_today")}</div><strong>${esc(L==="zh"?tr.zh:(tr.en||tr.zh))}</strong></div></div>`;
+  else if(all)h+=`<button class="btn" id="party">🎁 ${t("pick").replace("：","").replace(":","")}</button>`;
+  h+=`</div><div class="tomorrow">${t("tomorrow")}</div>`;
+  return h;
 }
-function totalsText(s){return (SET==="full"?[`GAD-7 ${s.gad}/21`,`PHQ-9 ${s.phq}/27`,`ENS6Q ${s.ens}/30`]:[`ENS6Q ${s.ens}/30`]).join(" · ")}
-async function send(s,f){
- let saved=true;
- try{await saveScores(s)}catch(e){saved=false}
- let pinged=true;
- try{
-  // Totals go in the alert only if saving to the tracker failed, as a backup
-  await post("Check-in "+CP,saved?"New check-in received. Scores are in your tracker.":"Tracker save failed. Totals: "+totalsText(s),3,"bar_chart");
-  if(f) await post("Please check in with her today","She may be having a hard time. Reach out kindly today. (Her answers are private.)",5,"heart");
- }catch(e){pinged=false}
- return saved||pinged;
+function viewBadges(){
+  const s=stats();const seen=getSeen();
+  let h=header(s)+`<div class="card"><h2>🏅 ${t("badges_title")}<span class="count">${BADGES.filter(b=>b.ok(s)).length} / ${BADGES.length}</span></h2><div class="grid">`;
+  BADGES.forEach(b=>{const ok=b.ok(s);h+=`<div class="badge${ok?"":" locked"}"><span class="b">${ok?b.e:"🔒"}</span>${esc(L==="zh"?b.zh:b.en)}</div>`});
+  h+=`</div></div><div class="card"><h2>📈 ${t("stats")}</h2>
+   <div class="stat"><span>${t("s_tasks")}</span><strong>${s.tasks}</strong></div>
+   <div class="stat"><span>${t("s_days")}</span><strong>${s.fullDays}</strong></div>
+   <div class="stat"><span>${t("s_checkins")}</span><strong>${s.checkins}</strong></div>
+   <div class="stat"><span>${t("s_streak")}</span><strong>${s.best}</strong></div></div>`;
+  return h;
 }
-async function submit(){
- const t=TX[L],s=totals(),f=flag();
- const btn=document.getElementById("sb");btn.textContent=t.sending;btn.style.pointerEvents="none";
- done(await send(s,f),s,f);
+function viewTreats(){
+  const s=stats();let h=header(s)+`<div class="card"><h2>🎁 ${t("treats_title")}</h2><p style="margin:0 0 12px;color:var(--muted);font-size:.92rem">${t("treats_sub")}</p><div class="tlist">`;
+  (ST.treats||[]).forEach(x=>{h+=`<div class="titem"><span class="em">${esc(x.emoji||"🎁")}</span><span>${esc(L==="zh"?x.zh:(x.en||x.zh))}</span>${x.added_by==="her"?`<span class="by">💡 ${t("mine")}</span>`:""}</div>`});
+  h+=`</div><div class="row" style="margin-top:12px"><input type="text" id="idea" maxlength="40" placeholder="${esc(t("own_ph"))}"><button class="hug" id="addIdea" style="flex:none">${t("add")}</button></div></div>`;
+  const log=(ST.treat_log||[]).slice().reverse();
+  if(log.length){h+=`<div class="card"><h2>💝 ${t("history")}</h2><div class="tlist">`;log.forEach(r=>{const x=(ST.treats||[]).find(y=>y.id===r.treat_id);if(x)h+=`<div class="titem"><span class="em">${esc(x.emoji||"🎁")}</span><span>${esc(L==="zh"?x.zh:(x.en||x.zh))}</span><span class="by">${t("day",{n:r.day})}</span></div>`});h+=`</div></div>`}
+  return h;
 }
-function done(ok,s,f){
- const t=TX[L];
- let h=hdr(100)+`<h1>${ok?t.done:""}</h1>${ok?`<p class="stem">${t.doneSub}</p>`:`<div class="note help">${t.fail}</div>`}`;
- h+=`<div class="note scores"><strong>${t.scores}</strong><br>${SET==="full"?`${t.gad}: ${s.gad}/21<br>${t.phq}: ${s.phq}/27<br>`:""}${t.ens}: ${s.ens}/30<br><span class="stem">${CP}</span></div>`;
- if(f)h+=`<div class="note help">${t.help}</div>`;
- if(!ok)h+=`<button class="btn" id="rt">${t.retry}</button>`;
- $.innerHTML=h;const lg=document.getElementById("lg");if(lg)lg.onclick=()=>{L=L==="zh"?"en":"zh";done(ok,s,f)};
- const rt=document.getElementById("rt");if(rt)rt.onclick=async()=>{rt.textContent=t.sending;rt.style.pointerEvents="none";done(await send(s,f),s,f)};
+
+/* ---------- interactions ---------- */
+function bind(){
+  const q=id=>document.getElementById(id);
+  if(q("lang"))q("lang").onclick=()=>{L=L==="zh"?"en":"zh";try{localStorage.setItem("pp_lang",L)}catch(e){};render()};
+  if(q("hug"))q("hug").onclick=sendHug;
+  if(q("survey"))q("survey").onclick=()=>startSurvey(dueSurvey());
+  if(q("party"))q("party").onclick=()=>showParty(false);
+  if(q("addIdea"))q("addIdea").onclick=async()=>{const v=q("idea").value.trim();if(!v)return;q("addIdea").disabled=true;
+    try{const id=await rpc("care_add_treat",{p_zh:v,p_emoji:"💡"});ST.treats.push({id,zh:v,en:null,emoji:"💡",added_by:"her"});toast("💡 "+v);ping("💡 New treat idea","She added a treat idea: "+v,2,"bulb");render()}catch(e){toast(t("net"));q("addIdea").disabled=false}};
+  document.querySelectorAll(".task").forEach(b=>b.onclick=ev=>onTask(b,ev));
 }
-render();
+let lastHug=0;
+async function sendHug(){if(Date.now()-lastHug<30000){hearts(8);return}lastHug=Date.now();hearts(18);buzz();toast(t("hug_sent"));ping("🫂 A hug from her","She sent you a hug from the app 🐷💕",3,"hugging_face")}
+async function onTask(b,ev){
+  const id=b.dataset.id;
+  if(id==="checkin"&&!b.classList.contains("done")){openCheckin();return}
+  const was=b.classList.contains("done"),now=!was;
+  // optimistic
+  setLog(ST.today,id,now);b.classList.toggle("done",now);b.classList.add("pop");b.querySelector(".ck").textContent=now?"✓":"";b.setAttribute("aria-pressed",String(now));
+  if(now){buzz();floatXP(ev.clientX||innerWidth/2,ev.clientY||innerHeight/2,"+10 XP ⭐")}
+  try{await rpc("care_set_task",{p_day:ST.today,p_task:id,p_done:now})}catch(e){setLog(ST.today,id,was);toast(t("net"));render();return}
+  afterChange();
+}
+function setLog(day,id,done){const r=(ST.task_log||[]).find(x=>x.day===day&&x.task_id===id);if(r)r.done=done;else (ST.task_log=ST.task_log||[]).push({day,task_id:id,done})}
+function afterChange(){
+  const plan=todayPlan(),done=doneSet(ST.today),all=plan.length&&plan.every(x=>done.has(x.id));
+  const picked=(ST.treat_log||[]).some(x=>x.day===ST.today);
+  if(all&&!picked&&afterChange._shown!==ST.today){afterChange._shown=ST.today;ping("🌟 Day "+ST.today+" complete!","She finished every task today 🐷🎉",3,"tada");showParty(true);return}
+  render();
+}
+
+/* ---------- celebration + treats ---------- */
+function pickTreats(){
+  const recent=new Set((ST.treat_log||[]).slice(-4).map(x=>x.treat_id));
+  const pool=(ST.treats||[]).filter(x=>!recent.has(x.id));const src=pool.length>=3?pool:(ST.treats||[]);
+  return src.slice().sort(()=>Math.random()-.5).slice(0,3);
+}
+function showParty(fx){
+  const p=document.getElementById("party"),ch=pickTreats();
+  p.innerHTML=`<div class="box"><div class="bigpig">${pigSVG()}</div><h3>${t("party_title")}</h3><p style="margin:0;color:var(--muted)">${t("party_sub")}</p>
+   <p style="margin:18px 0 0;font-weight:700">${t("pick")}</p><div class="tchoice">${ch.map(x=>`<button data-tr="${x.id}"><span class="em">${esc(x.emoji||"🎁")}</span><span>${esc(L==="zh"?x.zh:(x.en||x.zh))}</span></button>`).join("")}</div>
+   <div class="row"><input type="text" id="ownT" maxlength="40" placeholder="${esc(t("own_ph"))}" aria-label="${esc(t("own"))}"><button class="hug" id="ownAdd" style="flex:none">${t("add")}</button></div>
+   <button class="btn alt" id="later" style="margin-top:12px">${t("later")}</button></div>`;
+  p.classList.add("on");if(fx){confetti();hearts(16)}
+  p.querySelectorAll("[data-tr]").forEach(b=>b.onclick=()=>chooseTreat(+b.dataset.tr));
+  p.querySelector("#later").onclick=()=>{p.classList.remove("on");render()};
+  p.querySelector("#ownAdd").onclick=async()=>{const v=p.querySelector("#ownT").value.trim();if(!v)return;
+    try{const id=await rpc("care_add_treat",{p_zh:v,p_emoji:"💡"});ST.treats.push({id,zh:v,en:null,emoji:"💡",added_by:"her"});chooseTreat(id)}catch(e){toast(t("net"))}};
+}
+async function chooseTreat(id){
+  const x=(ST.treats||[]).find(y=>y.id===id);
+  try{await rpc("care_pick_treat",{p_day:ST.today,p_treat:id})}catch(e){toast(t("net"));return}
+  ST.treat_log=(ST.treat_log||[]).filter(r=>r.day!==ST.today);ST.treat_log.push({day:ST.today,treat_id:id});
+  document.getElementById("party").classList.remove("on");hearts(12,["🎁","🐷","💕"]);toast((x?x.emoji+" ":"")+t("enjoy"));
+  if(x)ping("🎁 Treat picked","Day "+ST.today+": "+(x.en||x.zh),3,"gift");
+  render();
+}
+
+/* ---------- check-in sheet ---------- */
+function openSheet(html){const sh=document.getElementById("sheet"),sc=document.getElementById("scrim");sh.innerHTML='<div class="grab"></div>'+html;sh.classList.add("on");sc.classList.add("on");sc.onclick=closeSheet;sh.scrollTop=0}
+function closeSheet(){document.getElementById("sheet").classList.remove("on");document.getElementById("scrim").classList.remove("on")}
+function openCheckin(){
+  const prev=(ST.checkins||[]).find(c=>c.day===ST.today)||{};
+  const V={func:prev.func??null,sleep:prev.sleep!=null?+prev.sleep:null,panic:prev.panic??null,mood:prev.mood??null,nose:prev.nose??null};
+  const F=t("faces");
+  const groups=[
+   ["func",t("ck_func"),[10,20,30,40,50,60,70,80,90,100].map(v=>[v,v+"%"])],
+   ["sleep",t("ck_sleep"),[[3,"≤3h"],[4,"4h"],[5,"5h"],[6,"6h"],[7,"7h"],[8,"8h+"]]],
+   ["panic",t("ck_panic"),[[0,"0"],[1,"1"],[2,"2"],[3,"3"],[5,"4+"]]],
+   ["mood",t("ck_mood"),F.map((f,i)=>[i*2+2,f])],
+   ["nose",t("ck_nose"),F.map((f,i)=>[i*2+2,f])]];
+  let h=`<h2 style="margin-bottom:2px">📝 ${t("ck_title")}</h2><p style="margin:0 0 14px;color:var(--muted);font-size:.85rem">${t("ck_priv")}</p>`;
+  groups.forEach(([k,label,opts])=>{h+=`<div class="q"><div class="ql">${label}</div><div class="opts" style="display:grid;gap:8px;grid-template-columns:repeat(${Math.min(opts.length,k==="func"?5:6)},minmax(0,1fr))">${opts.map(([v,l])=>`<button class="opt${k==="mood"||k==="nose"?" face":""}${V[k]===v?" on":""}" data-k="${k}" data-v="${v}" aria-pressed="${V[k]===v}">${l}</button>`).join("")}</div></div>`});
+  h+=`<div class="q"><div class="ql">${t("ck_note")}</div><textarea id="cknote" maxlength="500">${esc(prev.note||"")}</textarea></div><button class="btn" id="cksave">${t("ck_save")}</button>`;
+  openSheet(h);
+  const sh=document.getElementById("sheet");
+  const upd=()=>{sh.querySelector("#cksave").disabled=["func","sleep","panic","mood","nose"].some(k=>V[k]==null)};upd();
+  sh.querySelectorAll(".opt").forEach(b=>b.onclick=()=>{const k=b.dataset.k;V[k]=+b.dataset.v;sh.querySelectorAll(`.opt[data-k="${k}"]`).forEach(o=>{const on=o===b;o.classList.toggle("on",on);o.setAttribute("aria-pressed",String(on))});buzz();upd()});
+  sh.querySelector("#cksave").onclick=async()=>{
+    const btn=sh.querySelector("#cksave");btn.disabled=true;
+    const note=sh.querySelector("#cknote").value.trim();
+    try{await rpc("care_checkin",{p_day:ST.today,p_func:V.func,p_sleep:V.sleep,p_panic:V.panic,p_mood:V.mood,p_nose:V.nose,p_note:note||null})}catch(e){toast(t("net"));btn.disabled=false;return}
+    ST.checkins=(ST.checkins||[]).filter(c=>c.day!==ST.today);ST.checkins.push({day:ST.today,func:V.func,sleep:V.sleep,panic:V.panic,mood:V.mood,nose:V.nose,note});
+    setLog(ST.today,"checkin",true);closeSheet();toast("📝 "+t("ck_done"));hearts(8,["⭐","🐷","💕"]);
+    ping("📝 Day "+ST.today+" check-in","She checked in"+(note?" and left you a note":"")+". Open your console to see it.",3,"memo");
+    afterChange();
+  };
+}
+
+/* ---------- survey ---------- */
+function startSurvey(cp){
+  if(!cp)return;
+  const Qs=[];if(cp.t==="full"){GAD.zh.forEach((_,i)=>Qs.push({g:"gad",i,o:OPT4}));PHQ.zh.forEach((_,i)=>Qs.push({g:"phq",i,o:OPT4}))}
+  ENS.zh.forEach((_,i)=>Qs.push({g:"ens",i,o:OPT6}));
+  const A=new Array(Qs.length).fill(null);let step=-1;
+  const sh=document.getElementById("sheet");
+  const draw=()=>{
+    if(step===-1){openSheet(`<h2>📊 ${t("survey_t")}</h2><p>${t("survey_s",{m:cp.t==="full"?5:1})}</p><div class="help">${t("priv")}</div><button class="btn" id="sgo">${t("survey_go")}</button>`);sh.querySelector("#sgo").onclick=()=>{step=0;draw()};return}
+    if(step<Qs.length){const q=Qs[step],src=q.g==="gad"?GAD:q.g==="phq"?PHQ:ENS;
+      openSheet(`<div style="font-size:.85rem;color:var(--muted)">${t("qof",{a:step+1,b:Qs.length})}</div><div class="prog"><i style="width:${Math.round(step/Qs.length*100)}%"></i></div>
+       <div style="font-size:.9rem;color:var(--muted)">${STEM[q.g][L]}</div><p style="font-size:1.15rem;font-weight:700;margin:6px 0 14px">${src[L][q.i]}</p>
+       <div style="display:flex;flex-direction:column;gap:8px">${q.o[L].map((o,v)=>`<button class="opt${A[step]===v?" on":""}" data-v="${v}" style="width:100%;justify-content:flex-start;padding:12px 14px;display:block;text-align:left">${o}</button>`).join("")}</div>
+       ${step>0?`<button class="btn alt" id="sback" style="margin-top:14px">${t("back")}</button>`:""}`);
+      sh.querySelectorAll(".opt").forEach(b=>b.onclick=()=>{A[step]=+b.dataset.v;buzz();step++;draw()});
+      const bk=sh.querySelector("#sback");if(bk)bk.onclick=()=>{step--;draw()};return}
+    openSheet(`<h2>✨</h2><button class="btn" id="ssub">${t("submit")}</button><button class="btn alt" id="sback" style="margin-top:10px">${t("back")}</button>`);
+    sh.querySelector("#sback").onclick=()=>{step--;draw()};
+    sh.querySelector("#ssub").onclick=async()=>{
+      const b=sh.querySelector("#ssub");b.disabled=true;
+      const s={gad:0,phq:0,ens:0};Qs.forEach((q,k)=>s[q.g]+=A[k]||0);
+      const k9=Qs.findIndex(q=>q.g==="phq"&&q.i===8),flag=k9>=0&&A[k9]>0;
+      try{await rpc("care_submit_scores",{p_cp:cp.id,p_set:cp.t,p_gad:cp.t==="full"?s.gad:null,p_phq:cp.t==="full"?s.phq:null,p_ens:s.ens})}catch(e){toast(t("net"));b.disabled=false;return}
+      ping("📊 Check-in "+cp.id,"New check-in received. Scores are in your console.",3,"bar_chart");
+      if(flag)ping("Please check in with her today","She may be having a hard time. Reach out kindly today. (Her answers are private.)",5,"heart");
+      (ST.scores_done=ST.scores_done||[]).push(cp.id);
+      openSheet(`<h2>${t("thanks")}</h2>${flag?`<div class="help">${t("helpline")}</div>`:""}<button class="btn" id="sdone">${t("close")}</button>`);
+      sh.querySelector("#sdone").onclick=()=>{closeSheet();render()};confetti();
+    };
+  };
+  draw();
+}
+
+/* ---------- badges ---------- */
+function getSeen(){try{return JSON.parse(localStorage.getItem("pp_seen")||"[]")}catch(e){return []}}
+function checkNewBadges(){
+  const s=stats(),seen=new Set(getSeen()),fresh=BADGES.filter(b=>b.ok(s)&&!seen.has(b.id));
+  if(!fresh.length)return;
+  fresh.forEach(b=>seen.add(b.id));try{localStorage.setItem("pp_seen",JSON.stringify([...seen]))}catch(e){}
+  if(!checkNewBadges._init){checkNewBadges._init=true;if(s.tasks===0&&s.checkins===0)return}
+  const b=fresh[0];setTimeout(()=>{toast(`${b.e} ${t("newbadge")} ${L==="zh"?b.zh:b.en}`);hearts(10,[b.e,"✨","🐷"])},500);
+}
+
+/* ---------- boot ---------- */
+async function load(){
+  const app=document.getElementById("app");
+  if(!KEY){app.innerHTML=`<div class="center"><div class="pig" style="margin:0 auto 12px;width:96px;height:96px">${pigSVG()}</div>${t("nolink")}</div>`;return}
+  try{ST=await rpc("care_state",{});}
+  catch(e){app.innerHTML=`<div class="center"><div class="pig" style="margin:0 auto 12px;width:96px;height:96px">${pigSVG("sleepy")}</div>${e.status===403||e.status===401?t("nolink"):t("net")}<br><br><button class="btn alt" id="retry" style="max-width:220px;margin:0 auto">↻</button></div>`;const r=document.getElementById("retry");if(r)r.onclick=load;return}
+  document.getElementById("tabs").hidden=false;
+  try{const seen=getSeen();checkNewBadges._init=seen.length>0}catch(e){}
+  render();
+}
+document.querySelectorAll(".tabs button").forEach(b=>b.onclick=()=>{TAB=b.dataset.t;render();scrollTo({top:0,behavior:"smooth"})});
+document.addEventListener("visibilitychange",()=>{if(!document.hidden&&ST)load()});
+load();
 </script>
 </body>
 </html>
