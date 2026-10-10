@@ -1,0 +1,930 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="robots" content="noindex, nofollow">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="default">
+<meta name="apple-mobile-web-app-title" content="小猪加油">
+<meta name="theme-color" content="#FFF3F7" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#1E1519" media="(prefers-color-scheme: dark)">
+<link rel="apple-touch-icon" href="data:image/png;base64,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">
+<link rel="icon" href="data:image/png;base64,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">
+<title>小猪加油</title>
+<style>
+:root{
+  --bg:#FFF3F7;--card:#FFFFFF;--ink:#3B2530;--muted:#8E6F7C;--line:#F6D9E3;
+  --pink:#FF7FA8;--pink-soft:#FFE1EB;--mint:#3FB59B;--mint-soft:#DDF5EE;--gold:#F5B640;--gold-soft:#FFF1D2;--lilac:#9B87E8;
+  --shadow:0 6px 18px rgba(214,99,140,.12);
+  box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);
+}
+@media (prefers-color-scheme:dark){:root{
+  --bg:#1E1519;--card:#2A1E24;--ink:#F8E9EF;--muted:#BFA2AE;--line:#3D2C34;
+  --pink:#FF8FB3;--pink-soft:#46262F;--mint:#56C9AE;--mint-soft:#1F3A33;--gold:#F7C25A;--gold-soft:#3D3220;--lilac:#B3A3F0;--shadow:none}}
+*,*::before,*::after{box-sizing:inherit;-webkit-tap-highlight-color:transparent}
+html,body{height:100%}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:-apple-system,"PingFang SC","Hiragino Sans GB","Noto Sans SC",system-ui,sans-serif;font-size:17px;line-height:1.5;-webkit-font-smoothing:antialiased;overscroll-behavior-y:contain}
+button{font:inherit;color:inherit}
+.wrap{max-width:520px;margin:0 auto;padding:12px 16px calc(96px + env(safe-area-inset-bottom,0px))}
+.top{display:flex;align-items:center;gap:14px;padding:8px 0 4px}
+.pig{width:68px;height:68px;flex:none;position:relative}
+.pig svg{width:100%;height:100%;display:block}
+.pig .lv{position:absolute;right:-6px;bottom:-4px;background:var(--gold);color:#3B2530;font-size:.72rem;font-weight:800;border-radius:10px;padding:1px 7px;border:2px solid var(--bg)}
+.hello h1{font-size:1.45rem;line-height:1.2;margin:0}
+.hello .sub{color:var(--muted);font-size:.9rem}
+.lang{all:unset;margin-left:auto;align-self:flex-start;font-size:.8rem;color:var(--muted);border:1px solid var(--line);border-radius:14px;padding:3px 10px;cursor:pointer}
+.xp{margin:12px 0 4px;display:flex;align-items:center;gap:10px;font-size:.85rem;color:var(--muted)}
+.xpbar{flex:1;height:10px;border-radius:6px;background:var(--pink-soft);overflow:hidden}
+.xpbar i{display:block;height:100%;background:linear-gradient(90deg,var(--pink),var(--gold));border-radius:6px;transition:width .6s cubic-bezier(.2,.9,.3,1.3)}
+.chips{display:flex;gap:8px;margin:8px 0 14px;flex-wrap:wrap}
+.chip{background:var(--card);border-radius:14px;padding:6px 12px;font-size:.88rem;box-shadow:var(--shadow);border:1px solid var(--line)}
+.card{background:var(--card);border-radius:22px;padding:16px;margin:0 0 14px;box-shadow:var(--shadow);border:1px solid var(--line)}
+.note{background:linear-gradient(135deg,var(--pink-soft),var(--card))}
+.note .from{font-size:.8rem;color:var(--muted);margin-bottom:4px}
+.note p{margin:0 0 10px;font-size:1.02rem}
+.hug{all:unset;cursor:pointer;background:var(--pink);color:#fff;border-radius:16px;padding:9px 16px;font-weight:700;font-size:.95rem}
+.hug:active{transform:scale(.96)}
+h2{font-size:1.1rem;margin:4px 0 10px;display:flex;align-items:center;gap:8px}
+h2 .count{margin-left:auto;font-size:.9rem;color:var(--muted);font-weight:600}
+.ring{width:22px;height:22px}
+.task{all:unset;box-sizing:border-box;cursor:pointer;display:flex;align-items:center;gap:12px;width:100%;min-height:64px;padding:12px 14px;margin:0 0 10px;border-radius:18px;background:var(--bg);border:2px solid transparent;transition:transform .15s,background .25s,border-color .25s;position:relative}
+.task:active{transform:scale(.98)}
+.task .em{font-size:1.6rem;width:36px;text-align:center;flex:none}
+.task .tx{flex:1;font-size:1rem;line-height:1.35}
+.task .tx small{display:block;color:var(--muted);font-size:.78rem;margin-top:2px}
+.task .ck{width:30px;height:30px;border-radius:50%;border:2.5px solid var(--line);flex:none;display:grid;place-items:center;font-size:1rem;color:#fff;transition:all .25s}
+.task.done{background:var(--mint-soft);border-color:var(--mint)}
+.task.done .tx{color:var(--muted);text-decoration:line-through;text-decoration-color:var(--mint)}
+.task.done .ck{background:var(--mint);border-color:var(--mint)}
+.task.pop{animation:pop .45s cubic-bezier(.2,.9,.3,1.5)}
+@keyframes pop{0%{transform:scale(1)}40%{transform:scale(1.05)}100%{transform:scale(1)}}
+.float{position:fixed;pointer-events:none;font-weight:800;color:var(--pink);font-size:1.1rem;animation:up 1s ease-out forwards;z-index:60}
+@keyframes up{to{transform:translateY(-60px);opacity:0}}
+.tomorrow{text-align:center;color:var(--muted);font-size:.88rem;padding:6px 0 4px}
+.treatday{display:flex;align-items:center;gap:12px;background:var(--gold-soft);border-radius:18px;padding:12px 14px}
+.treatday .em{font-size:1.8rem}
+.btn{all:unset;box-sizing:border-box;cursor:pointer;display:block;width:100%;text-align:center;background:var(--pink);color:#fff;font-weight:800;border-radius:18px;padding:15px;font-size:1.05rem;min-height:52px}
+.btn.alt{background:var(--card);color:var(--ink);border:1.5px solid var(--line)}
+.btn.mint{background:var(--mint)}
+.btn:active{transform:scale(.98)}
+.btn[disabled]{opacity:.5}
+.survey{background:linear-gradient(135deg,#EDE7FF,var(--card))}
+@media (prefers-color-scheme:dark){.survey{background:linear-gradient(135deg,#2E2747,var(--card))}}
+/* tabs */
+.tabs{position:fixed;left:0;right:0;bottom:0;background:color-mix(in srgb,var(--card) 88%,transparent);backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);border-top:1px solid var(--line);display:flex;justify-content:space-around;padding:8px 8px calc(8px + env(safe-area-inset-bottom,0px));z-index:30}
+.tabs button{all:unset;cursor:pointer;display:flex;flex-direction:column;align-items:center;gap:2px;font-size:.72rem;color:var(--muted);padding:4px 6px;border-radius:12px;flex:1;min-width:0}
+.tabs button .ti{font-size:1.45rem;line-height:1}
+.tabs button[aria-selected="true"]{color:var(--pink);font-weight:700}
+/* badges */
+.grid{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}
+.badge{background:var(--bg);border-radius:18px;padding:12px 6px;text-align:center;font-size:.78rem;line-height:1.3;border:1.5px solid var(--line)}
+.badge .b{font-size:2rem;display:block;margin-bottom:4px}
+.badge.locked{opacity:.45;filter:grayscale(1)}
+.badge.new{border-color:var(--gold);animation:pop .6s}
+.stat{display:flex;justify-content:space-between;padding:8px 0;border-top:1px solid var(--line);font-size:.95rem}
+.stat:first-of-type{border-top:0}
+/* treats */
+.tlist{display:flex;flex-direction:column;gap:8px}
+.titem{display:flex;align-items:center;gap:12px;padding:10px 12px;border-radius:16px;background:var(--bg)}
+.titem .em{font-size:1.5rem;width:32px;text-align:center}
+.titem .by{margin-left:auto;font-size:.75rem;color:var(--muted)}
+.row{display:flex;gap:8px}
+input[type=text],textarea{font:inherit;font-size:16px;color:var(--ink);background:var(--bg);border:1.5px solid var(--line);border-radius:14px;padding:12px;width:100%}
+textarea{min-height:80px;resize:vertical}
+/* sheet + overlay */
+.scrim{position:fixed;inset:0;background:rgba(40,15,25,.45);z-index:40;display:none}
+.scrim.on{display:block}
+.sheet{position:fixed;left:0;right:0;bottom:0;max-height:92vh;overflow:auto;background:var(--card);border-radius:26px 26px 0 0;z-index:50;padding:10px 18px calc(18px + env(safe-area-inset-bottom,0px));transform:translateY(105%);transition:transform .35s cubic-bezier(.2,.9,.3,1)}
+.sheet.on{transform:none}
+.grab{width:44px;height:5px;border-radius:3px;background:var(--line);margin:4px auto 12px}
+.q{margin:0 0 16px}
+.q .ql{font-weight:700;margin-bottom:8px}
+.opts{display:flex;gap:8px;flex-wrap:wrap}
+.opt{all:unset;cursor:pointer;min-width:52px;min-height:46px;padding:0 12px;border-radius:14px;background:var(--bg);border:2px solid var(--line);display:grid;place-items:center;font-size:1rem}
+.opt.face{font-size:1.6rem}
+.opts .opt{min-width:0;padding:0 4px;justify-content:center}
+.opt.on{border-color:var(--pink);background:var(--pink-soft);font-weight:700}
+.party{position:fixed;inset:0;z-index:70;display:none;align-items:center;justify-content:center;padding:24px;background:rgba(255,236,243,.92)}
+@media (prefers-color-scheme:dark){.party{background:rgba(30,21,25,.94)}}
+.party.on{display:flex}
+.party .box{max-width:420px;width:100%;text-align:center}
+.party .bigpig{width:120px;height:120px;margin:0 auto;animation:bounce 1s ease-in-out infinite}
+@keyframes bounce{0%,100%{transform:translateY(0) rotate(-3deg)}50%{transform:translateY(-14px) rotate(3deg)}}
+.party h3{font-size:1.5rem;margin:12px 0 4px}
+.party .tchoice{display:flex;flex-direction:column;gap:10px;margin:16px 0}
+.party .tchoice button{all:unset;cursor:pointer;display:flex;align-items:center;gap:12px;background:var(--card);border-radius:18px;padding:14px;border:2px solid var(--line);text-align:left;font-size:1rem}
+.party .tchoice button:active{border-color:var(--pink)}
+.party .tchoice .em{font-size:1.7rem}
+.hearts{position:fixed;inset:0;pointer-events:none;z-index:80;overflow:hidden}
+.heart{position:absolute;bottom:-40px;font-size:1.8rem;animation:rise 2.4s ease-in forwards}
+@keyframes rise{to{transform:translateY(-110vh) rotate(25deg);opacity:0}}
+canvas#cf{position:fixed;inset:0;pointer-events:none;z-index:75}
+.toast{position:fixed;left:50%;top:calc(14px + env(safe-area-inset-top,0px));transform:translate(-50%,-140%);background:var(--ink);color:var(--bg);padding:10px 16px;border-radius:16px;font-size:.92rem;z-index:90;transition:transform .35s;max-width:90vw;text-align:center}
+.toast.on{transform:translate(-50%,0)}
+.center{text-align:center;color:var(--muted);padding:40px 10px}
+.help{background:var(--gold-soft);border-radius:16px;padding:12px;margin:12px 0;font-size:.95rem}
+.prog{height:6px;border-radius:3px;background:var(--pink-soft);margin:6px 0 14px;overflow:hidden}
+.prog i{display:block;height:100%;background:var(--lilac);transition:width .3s}
+
+/* routines */
+.rt{position:fixed;inset:0;z-index:84;background:linear-gradient(180deg,var(--pink-soft),var(--bg) 55%);display:none;flex-direction:column;padding:calc(14px + env(safe-area-inset-top,0px)) 20px calc(18px + env(safe-area-inset-bottom,0px))}
+.rt.on{display:flex}
+.rt .rhead{display:flex;align-items:center;gap:10px;font-weight:800}
+.rt .rhead .x{all:unset;cursor:pointer;margin-left:auto;font-size:1.3rem;padding:6px 10px;border-radius:12px}
+.rt .segs{display:flex;gap:4px;margin:12px 0 4px}
+.rt .segs i{flex:1;height:6px;border-radius:3px;background:var(--line)}
+.rt .segs i.d{background:var(--mint)}.rt .segs i.c{background:var(--pink)}
+.rt .rmain{flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;gap:6px}
+.rt .dial{position:relative;width:min(64vw,250px);height:min(64vw,250px)}
+.rt .dial svg{width:100%;height:100%;transform:rotate(-90deg)}
+.rt .dial .em{position:absolute;inset:0;display:grid;place-items:center;font-size:clamp(4rem,22vw,6.2rem)}
+.rt .dial.pulse .em{animation:pop .5s}
+.rt .sname{font-size:1.45rem;font-weight:800;line-height:1.3;max-width:340px}
+.rt .stime{font-size:2.1rem;font-weight:800;font-variant-numeric:tabular-nums}
+.rt .stime.over{color:var(--muted);font-size:1.4rem}
+.rt .next{font-size:.85rem;color:var(--muted);margin-top:4px}
+.rt .ctrl{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-top:10px}
+.rt .ctrl .btn{padding:12px 6px;font-size:.95rem;min-height:48px}
+.star{display:inline-block;background:var(--gold-soft);color:var(--ink);border-radius:12px;padding:2px 10px;font-size:.8rem;font-weight:700}
+.rcard{display:flex;align-items:center;gap:12px;padding:12px;border-radius:18px;background:var(--bg);margin:0 0 10px;border:1.5px solid var(--line)}
+.rcard .em{font-size:2rem}
+.rcard .meta{flex:1;min-width:0}
+.rcard .meta small{display:block;color:var(--muted);font-size:.8rem;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.rcard .go{all:unset;cursor:pointer;background:var(--pink);color:#fff;font-weight:800;border-radius:14px;padding:10px 14px}
+.rcard .ed{all:unset;cursor:pointer;padding:10px;font-size:1.1rem}
+.srow{display:flex;align-items:center;gap:6px;padding:8px 0;border-top:1px solid var(--line)}
+.srow .em{font-size:1.4rem;width:30px;text-align:center}
+.srow .nm{flex:1;min-width:0;font-size:.95rem}
+.srow .ib{all:unset;cursor:pointer;min-width:30px;height:32px;display:grid;place-items:center;border-radius:10px;background:var(--bg);font-size:.9rem}
+.srow .tm{min-width:46px;text-align:center;font-size:.85rem;font-variant-numeric:tabular-nums}
+.libgrid{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin:10px 0}
+.libgrid button{all:unset;cursor:pointer;background:var(--bg);border-radius:14px;padding:10px 6px;text-align:center;font-size:.8rem;line-height:1.3;border:1.5px solid var(--line)}
+.libgrid button .e{display:block;font-size:1.6rem}
+.emopick{display:flex;flex-wrap:wrap;gap:6px;margin:6px 0 10px}
+.emopick button{all:unset;cursor:pointer;font-size:1.5rem;padding:4px 8px;border-radius:10px;border:2px solid transparent}
+.emopick button.on{border-color:var(--pink);background:var(--pink-soft)}
+/* dreams */
+.dream{all:unset;box-sizing:border-box;cursor:pointer;display:block;width:100%;padding:14px;border-radius:18px;background:var(--bg);margin:0 0 10px;border:1.5px solid var(--line)}
+.dream .dt{font-size:.78rem;color:var(--muted)}
+.dream .dh{font-weight:700;margin:2px 0}
+.dream .dp{color:var(--muted);font-size:.92rem;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
+.pill2{display:inline-block;font-size:.74rem;border-radius:10px;padding:2px 8px;background:var(--pink-soft);margin:6px 6px 0 0}
+.pill2.ok{background:var(--mint-soft)}
+.tool.nightsky,.nightsky{background:linear-gradient(160deg,#2B2346,#4B3A78 60%,#7A5BA8);color:#F6F0FF;border:0}
+.nightsky .sub2{color:#D9CCF5}
+.chipsel{display:flex;flex-wrap:wrap;gap:8px}
+.chipsel .opt{min-height:40px;padding:0 12px}
+.an h3{font-size:1rem;margin:16px 0 6px}
+.an p{margin:0 0 8px}
+.an .sym{background:var(--bg);border-radius:14px;padding:10px 12px;margin:0 0 8px}
+/* breathing */
+.breath{position:fixed;inset:0;z-index:85;background:radial-gradient(circle at 50% 40%,var(--pink-soft),var(--bg) 70%);display:none;flex-direction:column;align-items:center;justify-content:center;padding:calc(20px + env(safe-area-inset-top,0px)) 24px calc(24px + env(safe-area-inset-bottom,0px));text-align:center}
+.breath.on{display:flex}
+.orb{width:min(72vw,300px);height:min(72vw,300px);border-radius:50%;display:grid;place-items:center;position:relative;margin:18px 0}
+.orb .orbring{position:absolute;inset:0;width:100%;height:100%;border-radius:50%;background:radial-gradient(circle,#FFC2D6 0%,var(--pink) 70%);box-shadow:0 0 60px rgba(255,127,168,.45);transform:scale(.55);will-change:transform}
+.orb .pigc{position:relative;width:40%;height:40%;background:#fff;border-radius:50%;padding:5%;box-shadow:0 4px 18px rgba(214,99,140,.25)}
+.bphase{font-size:1.7rem;font-weight:800;min-height:2.4rem}
+.bcount{font-size:1rem;color:var(--muted);min-height:1.5rem}
+.btime{font-variant-numeric:tabular-nums;font-size:1.05rem;color:var(--muted);margin-top:6px}
+.brow{display:flex;gap:10px;width:100%;max-width:360px;margin-top:22px}
+.brow .btn{flex:1}
+/* tools */
+.tool{all:unset;box-sizing:border-box;cursor:pointer;display:flex;align-items:center;gap:14px;width:100%;padding:16px;border-radius:20px;background:var(--bg);margin:0 0 10px;border:1.5px solid var(--line)}
+.tool .em{font-size:2rem;width:44px;text-align:center}
+.tool b{display:block;font-size:1.05rem}
+.tool small{color:var(--muted);font-size:.85rem}
+.tool:active{transform:scale(.98)}
+.steps li{margin:0 0 10px}
+.big-time{font-size:3rem;font-weight:800;text-align:center;font-variant-numeric:tabular-nums;margin:10px 0}
+.msgbtn{all:unset;cursor:pointer;margin-left:8px;border:1.5px solid var(--pink);color:var(--pink);border-radius:16px;padding:8px 14px;font-weight:700;font-size:.95rem}
+.tabs button .dot{position:absolute;top:2px;right:16px;width:9px;height:9px;border-radius:50%;background:var(--pink)}
+.tabs button{position:relative}
+:focus-visible{outline:3px solid var(--gold);outline-offset:2px}
+@media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
+</style>
+</head>
+<body>
+<div class="wrap" id="app"><div class="center">🐷 …</div></div>
+<nav class="tabs" id="tabs" role="tablist" hidden>
+  <button role="tab" data-t="today" aria-selected="true"><span class="ti">🐷</span><span data-l="tab_today">今天</span></button>
+  <button role="tab" data-t="badges" aria-selected="false"><span class="ti">🏅</span><span data-l="tab_badges">成就</span></button>
+  <button role="tab" data-t="dreams" aria-selected="false"><span class="ti">🌙</span><span data-l="tab_dreams">梦</span></button>
+  <button role="tab" data-t="tools" aria-selected="false"><span class="ti">🧰</span><span data-l="tab_tools">工具</span></button>
+  <button role="tab" data-t="treats" aria-selected="false"><span class="ti">🎁</span><span data-l="tab_treats">奖励</span></button>
+</nav>
+<div class="scrim" id="scrim"></div>
+<div class="sheet" id="sheet" role="dialog" aria-modal="true"></div>
+<div class="party" id="party" role="dialog" aria-modal="true"></div>
+<canvas id="cf"></canvas>
+<div class="hearts" id="hearts"></div>
+<div class="rt" id="routine" role="dialog" aria-modal="true"></div>
+<div class="breath" id="breath" role="dialog" aria-modal="true"></div>
+<div class="toast" id="toast" role="status"></div>
+<script>
+"use strict";
+const SB_URL="https://zskqjwwcyczezouglzmi.supabase.co";
+const SB_KEY="sb_publishable_PHSU2XfYkdnbAR1mZ8IC8A_TWKIXChx";
+const SB_LEGACY="eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Inpza3Fqd3djeWN6ZXpvdWdsem1pIiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODEyMDMzMDEsImV4cCI6MjA5Njc3OTMwMX0.ofebeGhucWa6G7MpoUIyJhthK2CnK8PPkAPINg7HW7s";
+const NTFY_URL="https://ntfy.sh/ens-2gqIIsH24xR4arHSYwhuh1oV";
+
+/* ---------- key ---------- */
+let KEY=null;
+try{const k=new URLSearchParams(location.search).get("k");if(k){localStorage.setItem("pp_key",k);KEY=k}else KEY=localStorage.getItem("pp_key")}catch(e){KEY=new URLSearchParams(location.search).get("k")}
+let L="zh";try{L=localStorage.getItem("pp_lang")||"zh"}catch(e){}
+
+/* ---------- words ---------- */
+const W={
+ zh:{tab_today:"今天",tab_badges:"成就",tab_treats:"奖励",day:"第 {n} 天",of30:"共30天",streak:"🔥 连续 {n} 天",xp:"{x} XP",lv:"Lv.{n}",
+  note_from:"今天想对你说",hug:"🫂 发个抱抱",hug_sent:"抱抱已经发出去啦💕",tasks:"今天的小事",tomorrow:"明天的任务会在明天早上出现哦 🌙",
+  ck_title:"晚上打卡",ck_priv:"这是我们俩一起看的，看看你一天天的变化 💕 问卷每一题的答案只有你自己知道。",ck_func:"今天整体感觉能做到平时的多少？",ck_sleep:"昨晚睡了多久？",ck_panic:"今天惊恐发作几次？",ck_mood:"心情",ck_nose:"鼻子舒服吗？",ck_note:"今天想跟我说点什么吗？（可选）",ck_save:"打卡 ✨",ck_done:"打卡完成！",
+  party_title:"今天全部完成！",party_sub:"你真的太棒了，我为你骄傲 🐷💕",pick:"选一个今天的奖励：",own:"我有别的想法…",own_ph:"比如：一起看电影",add:"加上",later:"等一下再选",
+  treat_today:"今天的奖励",enjoy:"好好享受吧 🐷",treats_title:"奖励清单",treats_sub:"完成一整天的任务，就从这里选一个。也可以加上你自己的想法！",mine:"我的想法",history:"选过的奖励",
+  badges_title:"小猪成就",stats:"我的进步",s_tasks:"完成的小事",s_days:"满分的天数",s_checkins:"打卡次数",s_streak:"最长连续",
+  survey_t:"每周小问卷",survey_s:"大约 {m} 分钟。帮我们看看你是不是在一点点变好。",survey_go:"开始",
+  priv:"每一题的答案只留在你的手机上，不会被保存。只会记录三个总分，并在需要时发送一条联系你的提醒。",
+  back:"上一题",submit:"提交",thanks:"谢谢你 ❤️ 提交好了",helpline:"谢谢你诚实地回答。你不是一个人。现在就可以打心理援助热线 12356，紧急情况拨打 120。也可以马上告诉我。",
+  net:"网络不太好，再试一次哦",nolink:"请用我发给你的链接打开这个页面 🐷",newbadge:"新成就！",close:"好的",
+  faces:["😣","🙁","😐","🙂","😊"],qof:"第 {a} / {b} 题",
+  tab_tools:"工具",msg_btn:"💌 留言",msg_title:"想对我说的话",msg_ph:"写点什么都可以…",msg_send:"发送 💌",msg_sent:"已经发给我啦 💕",joel_hug:"收到一个抱抱！🫂",
+  b_title:"呼吸练习",b_in:"吸气",b_out:"慢慢呼气",b_hint:"鼻子或嘴巴轻轻吸气4秒，缩唇慢慢呼气6秒。不用吸得很深。",b_start:"开始",b_pause:"暂停",b_resume:"继续",b_stop:"结束",b_done:"做完啦！真棒 🐷✨",b_once:"完成第1次！晚上再做一次就能打勾 ⭐",b_left:"还剩",b_choose:"选择时长",b_mark:"已经做过了，直接打勾",b_min:"{n} 分钟",
+  t_title:"小工具",t_sub:"随时可以用，用完会让你感觉好一点。",t_breath:"呼吸练习",t_breath_s:"跟着圆圈慢慢呼吸",t_sos:"难受的时候",t_sos_s:"惊恐来了，一步一步来",t_thought:"想法小本子",t_thought_s:"把担心写下来，再写一个更平静的回答",t_worry:"担心时间",t_worry_s:"10分钟，把担心放进本子里",t_msg:"给我留言",t_msg_s:"想说什么都可以",
+  sos_steps:["先告诉自己：这是鼻子的警报，不是真的危险。它会过去的。","跟着圆圈呼吸1分钟：吸气4秒，慢慢呼气6秒。","看看周围：说出5样看到的东西、4样摸到的、3样听到的。","脸前放一杯热水或温热的湿毛巾，感受暖暖的水汽。","如果医生开了按需的药，按医嘱服用。","给我发个消息，我在这里。"],sos_breathe:"🌬️ 开始1分钟呼吸",sos_help:"如果你有伤害自己的念头，或者胸痛、晕倒、心跳很不对劲，请马上打 12356（心理援助热线）或 120。",
+  th_what:"发生了什么？",th_thought:"脑子里冒出的担心是什么？",th_calm:"一个更平静、更公平的回答是？",th_save:"保存（只存在你的手机上）",th_saved:"保存好了 ✍️",th_list:"以前写的",th_priv:"这些只保存在你的手机上，我看不到。",
+  w_title:"担心时间",w_how:"把所有担心都写在纸上或本子里，不用解决它们。时间到了就合上本子，去做别的事。",w_start:"开始10分钟",w_done:"担心时间结束 ✅ 合上本子，做点别的吧",tab_dreams:"梦",d_title:"梦的日记",d_log:"🌙 记录一个梦",d_none:"还没有记录梦。明天早上醒来，试试看吧 ✨",d_body_ph:"想到什么写什么，哪怕只是一个画面…",d_title_ph:"给这个梦起个名字（可选）",d_feel:"梦里的感觉",d_vivid:"有多清晰？",d_night:"😱 是噩梦",d_lucid:"💡 我知道自己在做梦",d_save:"保存这个梦 🌙",d_saved:"梦已经保存好了 🌙 解读很快就会出现",d_pending:"✨ 解读中…",d_ready:"查看解读 ✨",d_nudge:"🌙 昨晚做梦了吗？趁还记得，记下来吧",d_priv:"你的梦和解读我们俩都能看到 💕 这样我可以帮你做解读。",
+  d_sum:"梦的概要",d_sym:"梦里的象征",d_emo:"情绪",d_wake:"和生活的联系",d_pat:"最近的规律",d_q:"想一想",d_sug:"小建议",d_rescript:"改写这个梦",d_yours:"你的梦",
+  d_feelings:["害怕","焦虑","难过","开心","平静","温暖","困惑","惊讶","生气","孤独"],
+  d_prompts:["昨晚的梦里发生了什么？","今天醒来，还记得哪些画面？","梦里你去了哪里？","说说昨晚的梦吧 🌙","趁还记得，把梦写下来吧","昨晚梦见了谁？","梦里最强烈的感觉是什么？"],
+  d_tips:["醒来先别动，闭着眼睛回想一下，梦常常会一点点回来。","哪怕只记得一个画面、一种颜色、一个感觉，也写下来。小细节会帮你下次记得更多。","写下梦里的感觉：害怕、开心、奇怪……感觉往往比情节更重要。","梦里有谁？熟悉的人、陌生人都可以写下来。","梦里在哪里？房间、街道、学校……描述一下那个地方。","用现在时写，好像正在发生一样，会想起更多。","今晚睡前对自己说一句：明天我会记得我的梦。","不用担心写得乱，想到什么写什么就好。","有没有声音、气味、温度？这些小细节很宝贵。","梦里你在做什么？想要什么？","如果梦很可怕，写下来就是把它放到纸上，让它离你远一点。","最近的梦有没有相似的地方？重复出现的东西值得记下来。"],r_title:"我的小流程",r_sub:"一步一步来，每一步都有计时，跟着做就好。",r_new:"+ 新建小流程",r_start:"开始",r_edit:"编辑",r_done_today:"今天完成 ✓",r_today:"⭐ 今天的任务",r_optional:"可以跳过",r_doneb:"✓ 完成",r_pause:"⏸ 暂停",r_resume:"▶ 继续",r_plus:"+1 分钟",r_skip:"跳过",r_next:"下一步：",r_last:"最后一步了！",r_finish:"完成啦！",r_finish_sub:"{n} 步完成，用时 {m} 分钟",r_quit:"先停在这里？",r_quit_yes:"结束",r_quit_no:"继续做",r_breath:"🌬️ 开始呼吸",r_ck:"📝 去打卡",r_dream:"🌙 记录梦",r_timeup:"时间到啦，做完就点完成 ✓",
+  r_name:"名字",r_icon:"图标",r_steps:"步骤",r_add_lib:"+ 从清单添加",r_add_own:"+ 自己写一个",r_own_name:"要做什么？",r_own_min:"大约几分钟",r_add:"加上",r_save:"保存 ✨",r_saved:"保存好了 ✨",r_delete:"删除这个小流程",r_min:"{n}分",r_sec:"{n}秒",r_sound_on:"🔔",r_sound_off:"🔕",r_quick:"🔁 小流程",r_empty:"至少加一个步骤哦",r_newname:"我的小流程"},
+ en:{tab_today:"Today",tab_badges:"Badges",tab_treats:"Treats",day:"Day {n}",of30:"of 30",streak:"🔥 {n}-day streak",xp:"{x} XP",lv:"Lv.{n}",
+  note_from:"A note for you today",hug:"🫂 Send a hug",hug_sent:"Hug sent 💕",tasks:"Today's small things",tomorrow:"Tomorrow's tasks appear tomorrow morning 🌙",
+  ck_title:"Evening check-in",ck_priv:"This is for both of us, so we can see how you're doing day by day 💕 Your questionnaire answers stay yours alone.",ck_func:"Overall, how much of a normal day could you do?",ck_sleep:"How long did you sleep last night?",ck_panic:"Panic attacks today?",ck_mood:"Mood",ck_nose:"How comfortable is your nose?",ck_note:"Anything you want to tell me today? (optional)",ck_save:"Check in ✨",ck_done:"Checked in!",
+  party_title:"All done today!",party_sub:"You're amazing, I'm so proud of you 🐷💕",pick:"Pick today's treat:",own:"I have another idea…",own_ph:"e.g. watch a movie together",add:"Add",later:"Pick later",
+  treat_today:"Today's treat",enjoy:"Enjoy it 🐷",treats_title:"Treat list",treats_sub:"Finish a whole day and pick one from here. Add your own ideas too!",mine:"My idea",history:"Treats you picked",
+  badges_title:"Piggy badges",stats:"My progress",s_tasks:"Small things done",s_days:"Full days",s_checkins:"Check-ins",s_streak:"Longest streak",
+  survey_t:"Weekly check-in",survey_s:"About {m} min. It helps us see whether you're getting a little better.",survey_go:"Start",
+  priv:"Your answers stay on your phone and aren't saved. Only three total scores are recorded, plus a notice to contact you if needed.",
+  back:"Back",submit:"Submit",thanks:"Thank you ❤️ All sent",helpline:"Thank you for answering honestly. You're not alone. You can call the psychological assistance hotline 12356 now, or 120 in an emergency. You can also tell me right away.",
+  net:"The connection is weak, try again",nolink:"Please open this page with the link I sent you 🐷",newbadge:"New badge!",close:"OK",
+  faces:["😣","🙁","😐","🙂","😊"],qof:"Question {a} of {b}",
+  tab_tools:"Tools",msg_btn:"💌 Message",msg_title:"Something to tell me",msg_ph:"Write anything…",msg_send:"Send 💌",msg_sent:"Sent to me 💕",joel_hug:"You got a hug! 🫂",
+  b_title:"Breathing",b_in:"Breathe in",b_out:"Breathe out slowly",b_hint:"Breathe in gently for 4 seconds, then out slowly for 6 through pursed lips. No need to breathe deeply.",b_start:"Start",b_pause:"Pause",b_resume:"Resume",b_stop:"Stop",b_done:"All done! Wonderful 🐷✨",b_once:"First one done! Do it once more tonight to tick it off ⭐",b_left:"left",b_choose:"Choose a length",b_mark:"Already did it, just tick it",b_min:"{n} min",
+  t_title:"Little tools",t_sub:"Use them any time. Each one helps a little.",t_breath:"Breathing",t_breath_s:"Breathe along with the circle",t_sos:"When it's hard",t_sos_s:"Panic is here: one step at a time",t_thought:"Thought notebook",t_thought_s:"Write a worry, then a calmer answer",t_worry:"Worry time",t_worry_s:"10 minutes to put worries on paper",t_msg:"Message me",t_msg_s:"Say anything you like",
+  sos_steps:["Tell yourself: this is my nose's alarm, not real danger. It will pass.","Breathe with the circle for 1 minute: in for 4, slowly out for 6.","Look around: name 5 things you see, 4 you can touch, 3 you can hear.","Hold a cup of hot water or a warm damp towel near your face and feel the warm steam.","If your doctor gave you an as-needed medicine, take it as prescribed.","Send me a message. I'm here."],sos_breathe:"🌬️ Start 1-minute breathing",sos_help:"If you have thoughts of hurting yourself, or chest pain, fainting or a heartbeat that feels very wrong, call 12356 (psychological assistance hotline) or 120 right away.",
+  th_what:"What happened?",th_thought:"What worried thought came up?",th_calm:"What's a calmer, fairer answer?",th_save:"Save (only on your phone)",th_saved:"Saved ✍️",th_list:"Earlier notes",th_priv:"These are saved only on your phone. I can't see them.",
+  w_title:"Worry time",w_how:"Write every worry on paper or in a notebook. Don't try to solve them. When time is up, close the notebook and do something else.",w_start:"Start 10 minutes",w_done:"Worry time is over ✅ Close the notebook and do something else",tab_dreams:"Dreams",d_title:"Dream journal",d_log:"🌙 Log a dream",d_none:"No dreams yet. Try it tomorrow morning when you wake up ✨",d_body_ph:"Write whatever comes, even a single image…",d_title_ph:"Give this dream a name (optional)",d_feel:"Feelings in the dream",d_vivid:"How vivid was it?",d_night:"😱 It was a nightmare",d_lucid:"💡 I knew I was dreaming",d_save:"Save this dream 🌙",d_saved:"Dream saved 🌙 Your reading will appear soon",d_pending:"✨ Reading in progress…",d_ready:"See the reading ✨",d_nudge:"🌙 Did you dream last night? Write it down while you remember",d_priv:"Your dreams and readings are for both of us 💕 That's how I can make your readings.",
+  d_sum:"Summary",d_sym:"Symbols",d_emo:"Emotions",d_wake:"Links to waking life",d_pat:"Recent patterns",d_q:"To reflect on",d_sug:"A small suggestion",d_rescript:"Rewrite this dream",d_yours:"Your dream",
+  d_feelings:["Scared","Anxious","Sad","Happy","Calm","Warm","Confused","Surprised","Angry","Lonely"],
+  d_prompts:["What happened in your dreams last night?","What pictures do you still remember from last night?","Where did you go in your dream?","Tell me about last night's dream 🌙","Write your dream down while you still remember","Who did you dream about last night?","What was the strongest feeling in the dream?"],
+  d_tips:["Before moving, keep your eyes closed and replay it. Dreams often come back bit by bit.","Even one image, a colour or a feeling is worth writing. Small details help you remember more next time.","Write the feelings: scared, happy, strange… feelings often matter more than the plot.","Who was there? Familiar people and strangers both count.","Where were you? A room, a street, a school… describe the place.","Write in the present tense, as if it's happening now. More will come back.","Tonight before sleep, tell yourself: tomorrow I'll remember my dream.","Don't worry about being tidy. Just write what comes.","Any sounds, smells or temperatures? Those little details are precious.","What were you doing in the dream? What did you want?","If it was scary, writing it down puts it on paper and a little further away from you.","Do recent dreams have something in common? Repeating things are worth noting."],r_title:"My routines",r_sub:"One step at a time, each with its own timer. Just follow along.",r_new:"+ New routine",r_start:"Start",r_edit:"Edit",r_done_today:"Done today ✓",r_today:"⭐ Today's task",r_optional:"Optional",r_doneb:"✓ Done",r_pause:"⏸ Pause",r_resume:"▶ Resume",r_plus:"+1 min",r_skip:"Skip",r_next:"Next: ",r_last:"Last step!",r_finish:"All done!",r_finish_sub:"{n} steps in {m} min",r_quit:"Stop here for now?",r_quit_yes:"Stop",r_quit_no:"Keep going",r_breath:"🌬️ Start breathing",r_ck:"📝 Check in",r_dream:"🌙 Log a dream",r_timeup:"Time's up. Tap Done when you've finished ✓",
+  r_name:"Name",r_icon:"Icon",r_steps:"Steps",r_add_lib:"+ Add from the list",r_add_own:"+ Write your own",r_own_name:"What to do?",r_own_min:"About how many minutes",r_add:"Add",r_save:"Save ✨",r_saved:"Saved ✨",r_delete:"Delete this routine",r_min:"{n} min",r_sec:"{n} s",r_sound_on:"🔔",r_sound_off:"🔕",r_quick:"🔁 Routines",r_empty:"Add at least one step",r_newname:"My routine"}
+};
+const t=(k,v)=>{let s=(W[L][k]??W.zh[k]??k);if(v)for(const x in v)s=s.split("{"+x+"}").join(v[x]);return s};
+const esc=s=>String(s??"").replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
+
+/* ---------- default plan (used only if no plan was published for a day) ---------- */
+const LIB={wake:["☀️","固定时间起床，晒5分钟太阳","Same wake-up time, then 5 min of daylight"],breathe5:["🌬️","呼吸练习5分钟，早晚各一次","Long-exhale breathing, 5 min, twice"],
+ walk10:["🚶","轻松散步5到10分钟","Gentle walk, 5 to 10 min"],humid:["💧","卧室开加湿器，每餐喝一杯水","Humidifier on, water with every meal"],
+ meds:["💊","按医嘱服药","Medicines exactly as prescribed"],checkin:["📝","晚上打卡（在这里点几下就好）","Evening check-in (just a few taps here)"]};
+const DEFAULT_IDS=["meds","wake","breathe5","walk10","humid","checkin"];
+const defaultTasks=()=>DEFAULT_IDS.map(id=>({id,emoji:LIB[id][0],zh:LIB[id][1],en:LIB[id][2]}));
+
+/* ---------- surveys ---------- */
+const CPS=[{id:"baseline",day:1,t:"full"},{id:"day7",day:7,t:"ens"},{id:"day14",day:14,t:"full"},{id:"day21",day:21,t:"ens"},{id:"day28",day:28,t:"full"}];
+const OPT4={zh:["完全不会","好几天","一半以上的天数","几乎每天"],en:["Not at all","Several days","More than half the days","Nearly every day"]};
+const OPT6={zh:["没有问题","非常轻微","轻微","中等","严重","最严重"],en:["No problem","Very mild","Mild","Moderate","Severe","As bad as it can be"]};
+const GAD={zh:["感觉紧张、焦虑或烦躁","不能够停止或控制担忧","对各种各样的事情担忧过多","很难放松下来","由于不安而无法静坐","变得容易烦恼或急躁","感到似乎将有可怕的事情发生而害怕"],en:["Feeling nervous, anxious or on edge","Not being able to stop or control worrying","Worrying too much about different things","Trouble relaxing","Being so restless that it's hard to sit still","Becoming easily annoyed or irritable","Feeling afraid, as if something awful might happen"]};
+const PHQ={zh:["做事时提不起劲或没有兴趣","感到心情低落、沮丧或绝望","入睡困难、睡不安稳或睡眠过多","感觉疲倦或没有活力","食欲不振或吃太多","觉得自己很糟，或觉得自己很失败，或让自己或家人失望","对事物专注有困难，例如阅读报纸或看电视时","动作或说话速度缓慢到别人已经察觉？或者相反，烦躁或坐立不安、动来动去的情况比平常更多","有不如死掉或用某种方式伤害自己的念头"],en:["Little interest or pleasure in doing things","Feeling down, depressed or hopeless","Trouble falling or staying asleep, or sleeping too much","Feeling tired or having little energy","Poor appetite or overeating","Feeling bad about yourself, or that you are a failure or have let yourself or your family down","Trouble concentrating, such as reading the newspaper or watching television","Moving or speaking so slowly that others could notice, or the opposite, being so fidgety or restless that you move around much more than usual","Thoughts that you would be better off dead, or of hurting yourself in some way"]};
+const ENS={zh:["鼻腔干燥","感觉鼻腔气流减少","窒息感","感觉鼻子太通、太空","鼻腔结痂","鼻腔灼热感"],en:["Nasal dryness","Sense of diminished nasal airflow","Suffocation","Nose feels too open","Nasal crusting","Nasal burning"]};
+const STEM={gad:{zh:"过去两周，以下问题困扰你的频率：",en:"Over the last 2 weeks, how often have you been bothered by:"},phq:{zh:"过去两周，以下问题困扰你的频率：",en:"Over the last 2 weeks, how often have you been bothered by:"},ens:{zh:"最近一周，这个鼻部症状有多严重：",en:"In the past week, how severe has this nose symptom been:"}};
+
+/* ---------- achievements ---------- */
+const BADGES=[
+ {id:"first",e:"🐾",zh:"小猪出发",en:"First step",ok:s=>s.tasks>=1},
+ {id:"survey",e:"📊",zh:"勇敢开始",en:"Brave start",ok:s=>s.surveys>=1},
+ {id:"checkin1",e:"📝",zh:"第一次打卡",en:"First check-in",ok:s=>s.checkins>=1},
+ {id:"full1",e:"🌟",zh:"满分的一天",en:"A perfect day",ok:s=>s.fullDays>=1},
+ {id:"doctor",e:"🏥",zh:"勇敢看病",en:"Brave doctor visit",ok:s=>s.did.bring},
+ {id:"streak3",e:"🔥",zh:"连续3天",en:"3-day streak",ok:s=>s.best>=3},
+ {id:"calm",e:"🍃",zh:"平静的一天",en:"A calm day",ok:s=>s.calm>=1},
+ {id:"sleep",e:"😴",zh:"好梦小猪",en:"Sweet dreams",ok:s=>s.goodSleep>=1},
+ {id:"idea",e:"💡",zh:"点子王",en:"Idea queen",ok:s=>s.ideas>=1},
+ {id:"breath10",e:"🌬️",zh:"呼吸小达人",en:"Breathing pro",ok:s=>s.breath>=10},
+ {id:"walk5",e:"🚶",zh:"散步小猪",en:"Walking piggy",ok:s=>s.walks>=5},
+ {id:"streak7",e:"🏅",zh:"连续7天",en:"7-day streak",ok:s=>s.best>=7},
+ {id:"checkin7",e:"🗓️",zh:"打卡达人",en:"Check-in star",ok:s=>s.checkins>=7},
+ {id:"treat5",e:"🎁",zh:"奖励收藏家",en:"Treat collector",ok:s=>s.treats>=5},
+ {id:"full7",e:"👑",zh:"7个满分天",en:"7 perfect days",ok:s=>s.fullDays>=7},
+ {id:"streak14",e:"🌈",zh:"连续14天",en:"14-day streak",ok:s=>s.best>=14},
+ {id:"level5",e:"🐖",zh:"超级小猪",en:"Super piggy",ok:s=>s.level>=5},
+ {id:"routine1",e:"🔁",zh:"第一次小流程",en:"First routine",ok:s=>s.routines>=1},
+ {id:"routine10",e:"⏱️",zh:"流程达人",en:"Routine pro",ok:s=>s.routines>=10},
+ {id:"dream1",e:"🌙",zh:"第一个梦",en:"First dream",ok:s=>s.dreams>=1},
+ {id:"dream7",e:"🌌",zh:"梦境收藏家",en:"Dream collector",ok:s=>s.dreams>=7},
+ {id:"day30",e:"🏆",zh:"30天完成",en:"30 days!",ok:s=>s.today>=30&&s.activeDays>=20}];
+const LEVELS={zh:["小猪宝宝","勇敢小猪","快乐小猪","闪亮小猪","超级小猪","小猪英雄","传奇小猪"],en:["Baby piggy","Brave piggy","Happy piggy","Shiny piggy","Super piggy","Piggy hero","Legendary piggy"]};
+
+/* ---------- api ---------- */
+async function rpc(fn,args){
+  const body=JSON.stringify(Object.assign({p_key:KEY},args||{}));
+  const url=SB_URL+"/rest/v1/rpc/"+fn;
+  let r=await fetch(url,{method:"POST",headers:{"apikey":SB_KEY,"Content-Type":"application/json"},body});
+  if(r.status===401){r=await fetch(url,{method:"POST",headers:{"apikey":SB_LEGACY,"Authorization":"Bearer "+SB_LEGACY,"Content-Type":"application/json"},body})}
+  if(!r.ok){const e=new Error("rpc "+r.status);e.status=r.status;throw e}
+  const txt=await r.text();return txt?JSON.parse(txt):null;
+}
+async function ping(title,msg,priority,tags){
+  try{await fetch(NTFY_URL+"?title="+encodeURIComponent(title)+"&priority="+(priority||3)+"&tags="+encodeURIComponent(tags||"pig"),{method:"POST",body:msg})}catch(e){}
+}
+
+/* ---------- state ---------- */
+let ST=null,TAB="today";
+function todayPlan(){const d=(ST.days||[]).find(x=>x.day===ST.today);return (d&&Array.isArray(d.tasks)&&d.tasks.length)?d.tasks:defaultTasks()}
+function todayNote(){const d=(ST.days||[]).find(x=>x.day===ST.today);return d?{zh:d.msg_zh,en:d.msg_en}:null}
+function doneSet(day){const s=new Set();(ST.task_log||[]).forEach(r=>{if(r.day===day&&r.done)s.add(r.task_id)});return s}
+function planFor(day){const d=(ST.days||[]).find(x=>x.day===day);return (d&&Array.isArray(d.tasks)&&d.tasks.length)?d.tasks:defaultTasks()}
+function stats(){
+  const s={tasks:0,fullDays:0,checkins:(ST.checkins||[]).length,surveys:(ST.scores_done||[]).filter(c=>CPS.some(x=>x.id===c)).length,
+    did:{},calm:0,goodSleep:0,ideas:(ST.treats||[]).filter(x=>x.added_by==="her").length,breath:0,walks:0,treats:(ST.treat_log||[]).length,best:0,cur:0,activeDays:0,today:ST.today};
+  (ST.checkins||[]).forEach(c=>{if(c.panic===0)s.calm++;if(c.sleep!=null&&+c.sleep>=7)s.goodSleep++});
+  const active=[];
+  for(let d=1;d<=ST.today;d++){
+    const plan=planFor(d),done=doneSet(d);let n=0;
+    plan.forEach(tk=>{if(done.has(tk.id)){n++;s.tasks++;s.did[tk.id.replace(/\d+$/,"")]=true;if(/^breathe/.test(tk.id))s.breath++;if(/^walk/.test(tk.id))s.walks++}});
+    if(n>0)s.activeDays++;
+    if(plan.length&&n===plan.length)s.fullDays++;
+    active.push(n>0);
+  }
+  let run=0;active.forEach(a=>{run=a?run+1:0;if(run>s.best)s.best=run});
+  let cur=0;for(let i=active.length-1;i>=0;i--){if(active[i])cur++;else if(i===active.length-1)continue;else break}
+  s.cur=cur;
+  s.dreams=(ST.dreams||[]).length;s.routines=(ST.routine_runs||[]).filter(r=>r.done>0).length;
+  s.xp=s.tasks*10+s.checkins*10+s.fullDays*30+s.surveys*20+s.dreams*10+s.routines*15;
+  s.level=Math.floor(s.xp/100)+1;s.inLevel=s.xp%100;
+  return s;
+}
+
+/* ---------- pig svg ---------- */
+function pigSVG(mood){
+  const happy=mood!=="sleepy";
+  return `<svg viewBox="0 0 100 100" aria-hidden="true"><polygon points="18,30 26,8 40,24" fill="#FF8FB1"/><polygon points="82,30 74,8 60,24" fill="#FF8FB1"/>
+  <circle cx="50" cy="54" r="38" fill="#FF8FB1"/><ellipse cx="50" cy="64" rx="15" ry="10" fill="#FFB3C9"/>
+  <ellipse cx="44.5" cy="64" rx="2.6" ry="3.6" fill="#784050"/><ellipse cx="55.5" cy="64" rx="2.6" ry="3.6" fill="#784050"/>
+  ${happy?`<path d="M31 45 q4 -5 8 0" stroke="#784050" stroke-width="3" fill="none" stroke-linecap="round"/><path d="M61 45 q4 -5 8 0" stroke="#784050" stroke-width="3" fill="none" stroke-linecap="round"/>`:`<circle cx="35" cy="45" r="3" fill="#784050"/><circle cx="65" cy="45" r="3" fill="#784050"/>`}
+  <ellipse cx="25" cy="58" rx="6" ry="3.5" fill="#FF6F9C" opacity=".6"/><ellipse cx="75" cy="58" rx="6" ry="3.5" fill="#FF6F9C" opacity=".6"/></svg>`;
+}
+
+/* ---------- effects ---------- */
+function toast(msg){const el=document.getElementById("toast");el.textContent=msg;el.classList.add("on");clearTimeout(toast._t);toast._t=setTimeout(()=>el.classList.remove("on"),2200)}
+function floatXP(x,y,txt){const f=document.createElement("div");f.className="float";f.textContent=txt;f.style.left=(x-20)+"px";f.style.top=(y-20)+"px";document.body.appendChild(f);setTimeout(()=>f.remove(),1000)}
+function hearts(n,set){const h=document.getElementById("hearts");const pool=set||["💕","💗","🐷","💖","✨","🫂"];for(let i=0;i<(n||14);i++){const e=document.createElement("div");e.className="heart";e.textContent=pool[i%pool.length];e.style.left=(Math.random()*90+5)+"vw";e.style.animationDelay=(Math.random()*.6)+"s";e.style.fontSize=(1.3+Math.random()*1.2)+"rem";h.appendChild(e);setTimeout(()=>e.remove(),3200)}}
+function confetti(){
+  if(matchMedia("(prefers-reduced-motion: reduce)").matches)return;
+  const c=document.getElementById("cf"),x=c.getContext("2d"),dpr=Math.min(2,devicePixelRatio||1);
+  c.width=innerWidth*dpr;c.height=innerHeight*dpr;x.scale(dpr,dpr);
+  const cols=["#FF7FA8","#F5B640","#3FB59B","#9B87E8","#FFC2D6"];
+  const P=Array.from({length:120},()=>({x:innerWidth/2,y:innerHeight*.35,vx:(Math.random()-.5)*12,vy:Math.random()*-12-4,r:Math.random()*6+4,c:cols[Math.floor(Math.random()*cols.length)],a:Math.random()*6,s:Math.random()<.3}));
+  let f=0;(function tick(){x.clearRect(0,0,innerWidth,innerHeight);P.forEach(p=>{p.vy+=.35;p.x+=p.vx;p.y+=p.vy;p.a+=.2;x.save();x.translate(p.x,p.y);x.rotate(p.a);x.fillStyle=p.c;
+    if(p.s){x.beginPath();x.arc(0,0,p.r/1.6,0,7);x.fill()}else x.fillRect(-p.r/2,-p.r/4,p.r,p.r/2);x.restore()});if(++f<110)requestAnimationFrame(tick);else x.clearRect(0,0,innerWidth,innerHeight)})();
+}
+function buzz(){try{navigator.vibrate&&navigator.vibrate(12)}catch(e){}}
+
+/* ---------- render ---------- */
+function render(){
+  const app=document.getElementById("app");
+  document.querySelectorAll("[data-l]").forEach(e=>e.textContent=t(e.dataset.l));
+  document.querySelectorAll(".tabs button").forEach(b=>b.setAttribute("aria-selected",String(b.dataset.t===TAB)));
+  if(TAB==="today")app.innerHTML=viewToday();else if(TAB==="badges")app.innerHTML=viewBadges();else if(TAB==="tools")app.innerHTML=viewTools();else if(TAB==="dreams")app.innerHTML=viewDreams();else app.innerHTML=viewTreats();
+  bind();checkNewBadges();
+}
+function header(s){
+  const lvName=LEVELS[L][Math.min(LEVELS[L].length-1,s.level-1)];
+  return `<div class="top"><div class="pig">${pigSVG()}<span class="lv">${t("lv",{n:s.level})}</span></div>
+   <div class="hello"><h1>${t("day",{n:Math.max(1,ST.today)})} <span style="font-size:.9rem;color:var(--muted);font-weight:500">${t("of30")}</span></h1><div class="sub">${esc(lvName)}</div></div>
+   <button class="lang" id="lang">${L==="zh"?"EN":"中文"}</button></div>
+   <div class="xp"><div class="xpbar"><i style="width:${s.inLevel}%"></i></div><span>${t("xp",{x:s.xp})}</span></div>
+   <div class="chips">${s.cur>0?`<span class="chip">${t("streak",{n:s.cur})}</span>`:""}<span class="chip">⭐ ${s.tasks}</span><span class="chip">🌟 ${s.fullDays}</span></div>`;
+}
+function dueSurvey(){const done=new Set(ST.scores_done||[]);return CPS.find(c=>ST.today>=c.day&&ST.today<c.day+7&&!done.has(c.id))}
+function viewToday(){
+  const s=stats(),plan=todayPlan(),done=doneSet(ST.today),note=todayNote(),cp=dueSurvey();
+  const n=plan.filter(x=>done.has(x.id)).length,all=plan.length&&n===plan.length;
+  const pick=(ST.treat_log||[]).filter(x=>x.day===ST.today).slice(-1)[0];const tr=pick&&(ST.treats||[]).find(x=>x.id===pick.treat_id);
+  let h=header(s);
+  if(note&&(note.zh||note.en))h+=`<div class="card note"><div class="from">${t("note_from")}</div><p>${esc(L==="zh"?note.zh:(note.en||note.zh))}</p><button class="hug" id="hug">${t("hug")}</button><button class="msgbtn" id="msg">${t("msg_btn")}</button></div>`;
+  const loggedToday=(ST.dreams||[]).some(d=>d.day===ST.today);
+  if(!loggedToday&&new Date().getHours()<13)h+=`<button class="tool nightsky" data-tool="dreamlog" style="margin-bottom:14px"><span class="em">🌙</span><span><b>${t("d_nudge")}</b><small class="sub2" style="color:#D9CCF5">${esc(rot("d_tips"))}</small></span></button>`;
+  if(cp)h+=`<div class="card survey"><h2>📊 ${t("survey_t")}</h2><p style="margin:0 0 12px;color:var(--muted)">${t("survey_s",{m:cp.t==="full"?5:1})}</p><button class="btn" id="survey">${t("survey_go")}</button></div>`;
+  h+=routineQuick();
+  const pct=plan.length?Math.round(n/plan.length*100):0;
+  h+=`<div class="card"><h2>🐷 ${t("tasks")}<span class="count">${n} / ${plan.length}</span></h2><div class="prog"><i style="width:${pct}%"></i></div>`;
+  plan.forEach(tk=>{const d=done.has(tk.id);h+=`<button class="task${d?" done":""}" data-id="${esc(tk.id)}" aria-pressed="${d}"><span class="em">${esc(tk.emoji||"🐷")}</span><span class="tx">${esc(L==="zh"?tk.zh:(tk.en||tk.zh))}</span><span class="ck">${d?"✓":""}</span></button>`});
+  if(tr)h+=`<div class="treatday"><span class="em">${esc(tr.emoji||"🎁")}</span><div><div style="font-size:.8rem;color:var(--muted)">${t("treat_today")}</div><strong>${esc(L==="zh"?tr.zh:(tr.en||tr.zh))}</strong></div></div>`;
+  else if(all)h+=`<button class="btn" id="partyBtn">🎁 ${t("pick").replace("：","").replace(":","")}</button>`;
+  h+=`</div><div class="tomorrow">${t("tomorrow")}</div>`;
+  return h;
+}
+function viewBadges(){
+  const s=stats();const seen=getSeen();
+  let h=header(s)+`<div class="card"><h2>🏅 ${t("badges_title")}<span class="count">${BADGES.filter(b=>b.ok(s)).length} / ${BADGES.length}</span></h2><div class="grid">`;
+  BADGES.forEach(b=>{const ok=b.ok(s);h+=`<div class="badge${ok?"":" locked"}"><span class="b">${ok?b.e:"🔒"}</span>${esc(L==="zh"?b.zh:b.en)}</div>`});
+  h+=`</div></div><div class="card"><h2>📈 ${t("stats")}</h2>
+   <div class="stat"><span>${t("s_tasks")}</span><strong>${s.tasks}</strong></div>
+   <div class="stat"><span>${t("s_days")}</span><strong>${s.fullDays}</strong></div>
+   <div class="stat"><span>${t("s_checkins")}</span><strong>${s.checkins}</strong></div>
+   <div class="stat"><span>${t("s_streak")}</span><strong>${s.best}</strong></div></div>`;
+  return h;
+}
+function viewTreats(){
+  const s=stats();let h=header(s)+`<div class="card"><h2>🎁 ${t("treats_title")}</h2><p style="margin:0 0 12px;color:var(--muted);font-size:.92rem">${t("treats_sub")}</p><div class="tlist">`;
+  (ST.treats||[]).forEach(x=>{h+=`<div class="titem"><span class="em">${esc(x.emoji||"🎁")}</span><span>${esc(L==="zh"?x.zh:(x.en||x.zh))}</span>${x.added_by==="her"?`<span class="by">💡 ${t("mine")}</span>`:""}</div>`});
+  h+=`</div><div class="row" style="margin-top:12px"><input type="text" id="idea" maxlength="40" placeholder="${esc(t("own_ph"))}"><button class="hug" id="addIdea" style="flex:none">${t("add")}</button></div></div>`;
+  const log=(ST.treat_log||[]).slice().reverse();
+  if(log.length){h+=`<div class="card"><h2>💝 ${t("history")}</h2><div class="tlist">`;log.forEach(r=>{const x=(ST.treats||[]).find(y=>y.id===r.treat_id);if(x)h+=`<div class="titem"><span class="em">${esc(x.emoji||"🎁")}</span><span>${esc(L==="zh"?x.zh:(x.en||x.zh))}</span><span class="by">${t("day",{n:r.day})}</span></div>`});h+=`</div></div>`}
+  return h;
+}
+
+/* ---------- interactions ---------- */
+function bind(){
+  const q=id=>document.getElementById(id);
+  if(q("lang"))q("lang").onclick=()=>{L=L==="zh"?"en":"zh";try{localStorage.setItem("pp_lang",L)}catch(e){};render()};
+  if(q("hug"))q("hug").onclick=sendHug;
+  if(q("msg"))q("msg").onclick=openMessage;
+  document.querySelectorAll("[data-tool]").forEach(b=>b.onclick=()=>openTool(b.dataset.tool));
+  document.querySelectorAll("[data-dream]").forEach(b=>b.onclick=()=>openDream(+b.dataset.dream));
+  document.querySelectorAll("[data-rstart]").forEach(b=>b.onclick=()=>startRoutine(+b.dataset.rstart));
+  if(q("survey"))q("survey").onclick=()=>startSurvey(dueSurvey());
+  if(q("partyBtn"))q("partyBtn").onclick=()=>showParty(false);
+  if(q("addIdea"))q("addIdea").onclick=async()=>{const v=q("idea").value.trim();if(!v)return;q("addIdea").disabled=true;
+    try{const id=await rpc("care_add_treat",{p_zh:v,p_emoji:"💡"});ST.treats.push({id,zh:v,en:null,emoji:"💡",added_by:"her"});toast("💡 "+v);ping("💡 New treat idea","She added a treat idea: "+v,2,"bulb");render()}catch(e){toast(t("net"));q("addIdea").disabled=false}};
+  document.querySelectorAll(".task").forEach(b=>b.onclick=ev=>onTask(b,ev));
+}
+let lastHug=0;
+async function sendHug(){if(Date.now()-lastHug<30000){hearts(8);return}lastHug=Date.now();hearts(18);buzz();toast(t("hug_sent"));rpc("care_send",{p_kind:"hug",p_body:null}).catch(()=>{});ping("🫂 A hug from her","She sent you a hug from the app 🐷💕",3,"hugging_face")}
+async function onTask(b,ev){
+  const id=b.dataset.id;
+  if(id==="checkin"&&!b.classList.contains("done")){openCheckin();return}
+  const tk=todayPlan().find(x=>x.id===id);
+  if(tk&&isBreathTask(tk)&&!b.classList.contains("done")){openBreathLauncher(tk);return}
+  if(tk&&id==="thought"&&!b.classList.contains("done")){openTool("thought");return}
+  if(tk&&id==="worry"&&!b.classList.contains("done")){openTool("worry");return}
+  const was=b.classList.contains("done"),now=!was;
+  // optimistic
+  setLog(ST.today,id,now);b.classList.toggle("done",now);b.classList.add("pop");b.querySelector(".ck").textContent=now?"✓":"";b.setAttribute("aria-pressed",String(now));
+  if(now){buzz();floatXP(ev.clientX||innerWidth/2,ev.clientY||innerHeight/2,"+10 XP ⭐")}
+  try{await rpc("care_set_task",{p_day:ST.today,p_task:id,p_done:now})}catch(e){setLog(ST.today,id,was);toast(t("net"));render();return}
+  afterChange();
+}
+function setLog(day,id,done){const r=(ST.task_log||[]).find(x=>x.day===day&&x.task_id===id);if(r)r.done=done;else (ST.task_log=ST.task_log||[]).push({day,task_id:id,done})}
+function afterChange(){
+  const plan=todayPlan(),done=doneSet(ST.today),all=plan.length&&plan.every(x=>done.has(x.id));
+  const picked=(ST.treat_log||[]).some(x=>x.day===ST.today);
+  if(all&&!picked&&afterChange._shown!==ST.today){afterChange._shown=ST.today;ping("🌟 Day "+ST.today+" complete!","She finished every task today 🐷🎉",3,"tada");showParty(true);return}
+  render();
+}
+
+/* ---------- celebration + treats ---------- */
+function pickTreats(){
+  const recent=new Set((ST.treat_log||[]).slice(-4).map(x=>x.treat_id));
+  const pool=(ST.treats||[]).filter(x=>!recent.has(x.id));const src=pool.length>=3?pool:(ST.treats||[]);
+  return src.slice().sort(()=>Math.random()-.5).slice(0,3);
+}
+function showParty(fx){
+  const p=document.getElementById("party"),ch=pickTreats();
+  p.innerHTML=`<div class="box"><div class="bigpig">${pigSVG()}</div><h3>${t("party_title")}</h3><p style="margin:0;color:var(--muted)">${t("party_sub")}</p>
+   <p style="margin:18px 0 0;font-weight:700">${t("pick")}</p><div class="tchoice">${ch.map(x=>`<button data-tr="${x.id}"><span class="em">${esc(x.emoji||"🎁")}</span><span>${esc(L==="zh"?x.zh:(x.en||x.zh))}</span></button>`).join("")}</div>
+   <div class="row"><input type="text" id="ownT" maxlength="40" placeholder="${esc(t("own_ph"))}" aria-label="${esc(t("own"))}"><button class="hug" id="ownAdd" style="flex:none">${t("add")}</button></div>
+   <button class="btn alt" id="later" style="margin-top:12px">${t("later")}</button></div>`;
+  p.classList.add("on");if(fx){confetti();hearts(16)}
+  p.querySelectorAll("[data-tr]").forEach(b=>b.onclick=()=>chooseTreat(+b.dataset.tr));
+  p.querySelector("#later").onclick=()=>{p.classList.remove("on");render()};
+  p.querySelector("#ownAdd").onclick=async()=>{const v=p.querySelector("#ownT").value.trim();if(!v)return;
+    try{const id=await rpc("care_add_treat",{p_zh:v,p_emoji:"💡"});ST.treats.push({id,zh:v,en:null,emoji:"💡",added_by:"her"});chooseTreat(id)}catch(e){toast(t("net"))}};
+}
+async function chooseTreat(id){
+  const x=(ST.treats||[]).find(y=>y.id===id);
+  try{await rpc("care_pick_treat",{p_day:ST.today,p_treat:id})}catch(e){toast(t("net"));return}
+  ST.treat_log=(ST.treat_log||[]).filter(r=>r.day!==ST.today);ST.treat_log.push({day:ST.today,treat_id:id});
+  document.getElementById("party").classList.remove("on");hearts(12,["🎁","🐷","💕"]);toast((x?x.emoji+" ":"")+t("enjoy"));
+  if(x)ping("🎁 Treat picked","Day "+ST.today+": "+(x.en||x.zh),3,"gift");
+  render();
+}
+
+/* ---------- check-in sheet ---------- */
+function openSheet(html){const sh=document.getElementById("sheet"),sc=document.getElementById("scrim");sh.innerHTML='<div class="grab"></div>'+html;sh.classList.add("on");sc.classList.add("on");sc.onclick=closeSheet;sh.scrollTop=0}
+function closeSheet(){document.getElementById("sheet").classList.remove("on");document.getElementById("scrim").classList.remove("on");if(typeof routineSheetClosed==="function")setTimeout(routineSheetClosed,0)}
+let CK_CB=null;
+function openCheckin(cb){CK_CB=cb||null;
+  const prev=(ST.checkins||[]).find(c=>c.day===ST.today)||{};
+  const V={func:prev.func??null,sleep:prev.sleep!=null?+prev.sleep:null,panic:prev.panic??null,mood:prev.mood??null,nose:prev.nose??null};
+  const F=t("faces");
+  const groups=[
+   ["func",t("ck_func"),[10,20,30,40,50,60,70,80,90,100].map(v=>[v,v+"%"])],
+   ["sleep",t("ck_sleep"),[[3,"≤3h"],[4,"4h"],[5,"5h"],[6,"6h"],[7,"7h"],[8,"8h+"]]],
+   ["panic",t("ck_panic"),[[0,"0"],[1,"1"],[2,"2"],[3,"3"],[5,"4+"]]],
+   ["mood",t("ck_mood"),F.map((f,i)=>[i*2+2,f])],
+   ["nose",t("ck_nose"),F.map((f,i)=>[i*2+2,f])]];
+  let h=`<h2 style="margin-bottom:2px">📝 ${t("ck_title")}</h2><p style="margin:0 0 14px;color:var(--muted);font-size:.85rem">${t("ck_priv")}</p>`;
+  groups.forEach(([k,label,opts])=>{h+=`<div class="q"><div class="ql">${label}</div><div class="opts" style="display:grid;gap:8px;grid-template-columns:repeat(${Math.min(opts.length,k==="func"?5:6)},minmax(0,1fr))">${opts.map(([v,l])=>`<button class="opt${k==="mood"||k==="nose"?" face":""}${V[k]===v?" on":""}" data-k="${k}" data-v="${v}" aria-pressed="${V[k]===v}">${l}</button>`).join("")}</div></div>`});
+  h+=`<div class="q"><div class="ql">${t("ck_note")}</div><textarea id="cknote" maxlength="500">${esc(prev.note||"")}</textarea></div><button class="btn" id="cksave">${t("ck_save")}</button>`;
+  openSheet(h);
+  const sh=document.getElementById("sheet");
+  const upd=()=>{sh.querySelector("#cksave").disabled=["func","sleep","panic","mood","nose"].some(k=>V[k]==null)};upd();
+  sh.querySelectorAll(".opt").forEach(b=>b.onclick=()=>{const k=b.dataset.k;V[k]=+b.dataset.v;sh.querySelectorAll(`.opt[data-k="${k}"]`).forEach(o=>{const on=o===b;o.classList.toggle("on",on);o.setAttribute("aria-pressed",String(on))});buzz();upd()});
+  sh.querySelector("#cksave").onclick=async()=>{
+    const btn=sh.querySelector("#cksave");btn.disabled=true;
+    const note=sh.querySelector("#cknote").value.trim();
+    try{await rpc("care_checkin",{p_day:ST.today,p_func:V.func,p_sleep:V.sleep,p_panic:V.panic,p_mood:V.mood,p_nose:V.nose,p_note:note||null})}catch(e){toast(t("net"));btn.disabled=false;return}
+    ST.checkins=(ST.checkins||[]).filter(c=>c.day!==ST.today);ST.checkins.push({day:ST.today,func:V.func,sleep:V.sleep,panic:V.panic,mood:V.mood,nose:V.nose,note});
+    setLog(ST.today,"checkin",true);closeSheet();toast("📝 "+t("ck_done"));hearts(8,["⭐","🐷","💕"]);
+    ping("📝 Day "+ST.today+" check-in","She checked in"+(note?" and left you a note":"")+". Open your console to see it.",3,"memo");
+    if(CK_CB){const cb=CK_CB;CK_CB=null;render();cb(true);return}
+    afterChange();
+  };
+}
+
+/* ---------- survey ---------- */
+function startSurvey(cp){
+  if(!cp)return;
+  const Qs=[];if(cp.t==="full"){GAD.zh.forEach((_,i)=>Qs.push({g:"gad",i,o:OPT4}));PHQ.zh.forEach((_,i)=>Qs.push({g:"phq",i,o:OPT4}))}
+  ENS.zh.forEach((_,i)=>Qs.push({g:"ens",i,o:OPT6}));
+  const A=new Array(Qs.length).fill(null);let step=-1;
+  const sh=document.getElementById("sheet");
+  const draw=()=>{
+    if(step===-1){openSheet(`<h2>📊 ${t("survey_t")}</h2><p>${t("survey_s",{m:cp.t==="full"?5:1})}</p><div class="help">${t("priv")}</div><button class="btn" id="sgo">${t("survey_go")}</button>`);sh.querySelector("#sgo").onclick=()=>{step=0;draw()};return}
+    if(step<Qs.length){const q=Qs[step],src=q.g==="gad"?GAD:q.g==="phq"?PHQ:ENS;
+      openSheet(`<div style="font-size:.85rem;color:var(--muted)">${t("qof",{a:step+1,b:Qs.length})}</div><div class="prog"><i style="width:${Math.round(step/Qs.length*100)}%"></i></div>
+       <div style="font-size:.9rem;color:var(--muted)">${STEM[q.g][L]}</div><p style="font-size:1.15rem;font-weight:700;margin:6px 0 14px">${src[L][q.i]}</p>
+       <div style="display:flex;flex-direction:column;gap:8px">${q.o[L].map((o,v)=>`<button class="opt${A[step]===v?" on":""}" data-v="${v}" style="width:100%;justify-content:flex-start;padding:12px 14px;display:block;text-align:left">${o}</button>`).join("")}</div>
+       ${step>0?`<button class="btn alt" id="sback" style="margin-top:14px">${t("back")}</button>`:""}`);
+      sh.querySelectorAll(".opt").forEach(b=>b.onclick=()=>{A[step]=+b.dataset.v;buzz();step++;draw()});
+      const bk=sh.querySelector("#sback");if(bk)bk.onclick=()=>{step--;draw()};return}
+    openSheet(`<h2>✨</h2><button class="btn" id="ssub">${t("submit")}</button><button class="btn alt" id="sback" style="margin-top:10px">${t("back")}</button>`);
+    sh.querySelector("#sback").onclick=()=>{step--;draw()};
+    sh.querySelector("#ssub").onclick=async()=>{
+      const b=sh.querySelector("#ssub");b.disabled=true;
+      const s={gad:0,phq:0,ens:0};Qs.forEach((q,k)=>s[q.g]+=A[k]||0);
+      const k9=Qs.findIndex(q=>q.g==="phq"&&q.i===8),flag=k9>=0&&A[k9]>0;
+      try{await rpc("care_submit_scores",{p_cp:cp.id,p_set:cp.t,p_gad:cp.t==="full"?s.gad:null,p_phq:cp.t==="full"?s.phq:null,p_ens:s.ens})}catch(e){toast(t("net"));b.disabled=false;return}
+      ping("📊 Check-in "+cp.id,"New check-in received. Scores are in your console.",3,"bar_chart");
+      if(flag)ping("Please check in with her today","She may be having a hard time. Reach out kindly today. (Her answers are private.)",5,"heart");
+      (ST.scores_done=ST.scores_done||[]).push(cp.id);
+      openSheet(`<h2>${t("thanks")}</h2>${flag?`<div class="help">${t("helpline")}</div>`:""}<button class="btn" id="sdone">${t("close")}</button>`);
+      sh.querySelector("#sdone").onclick=()=>{closeSheet();render()};confetti();
+    };
+  };
+  draw();
+}
+
+
+
+
+/* ---------- routines ---------- */
+const RLIB=[["eye_drops","👁️","点眼药水","Eye drops",60],["nose_wash","🧴","用洗鼻液洗鼻子","Nose wash",120],["nose_gel","💧","涂鼻腔凝胶","Nasal gel",60],["mouth_rinse","🧂","盐水漱口","Salt-water mouth rinse",60],
+ ["tcm","🍵","吃中药","Chinese medicine",120],["meds","💊","按医嘱吃药","Medicines as prescribed",60],["brush_teeth","🪥","刷牙","Brush teeth",120],["floss","🦷","用牙线","Floss",60],
+ ["wash_face","🧼","洗脸","Wash face",120],["skincare","✨","护肤","Skincare",180],["shower","🚿","洗澡","Shower",600],["hair","💇","整理头发","Hair",180],["get_dressed","👗","换衣服","Get dressed",180],
+ ["make_bed","🛏️","整理床铺","Make the bed",120],["water","🥛","喝一杯温水","A glass of warm water",60],["breakfast","🍳","吃早餐","Breakfast",900],["sunlight","☀️","晒5分钟太阳","5 min of daylight",300],
+ ["breathing","🌬️","呼吸练习","Breathing practice",180],["stretch","🤸","轻轻伸展","Gentle stretch",300],["walk","🚶","散步","A walk",600],["dream_log","🌙","记录昨晚的梦","Log last night's dream",180],
+ ["humidifier","💨","打开加湿器","Turn on the humidifier",60],["tidy","🧺","整理一下房间","Tidy up a little",300],["thought","✍️","写下一个想法","Thought notebook",180],
+ ["wind_down","📵","放下手机，放松一下","Phone away, wind down",600],["pajamas","👚","换睡衣","Pajamas on",120],["read","📖","读几页书","Read a few pages",600],["warm_drink","☕","喝点温热的","A warm drink",120],
+ ["gratitude","💗","想一件今天开心的小事","One good thing about today",60],["checkin","📝","晚上打卡","Evening check-in",60],["lights_out","😴","按医嘱吃助眠药，躺好关灯","Sleep medicine as prescribed, lights out",60]];
+const RLIBM=Object.fromEntries(RLIB.map(r=>[r[0],{key:r[0],emoji:r[1],zh:r[2],en:r[3],secs:r[4]}]));
+const LINK={sunlight:t=>t.id==="wake",meds:t=>t.id==="meds",lights_out:t=>t.id==="meds",breathing:t=>/^breathe/.test(t.id),walk:t=>/^walk/.test(t.id),
+ nose_gel:t=>t.id==="nose"||(/鼻/.test(t.zh||"")&&/(洗|凝胶|护理)/.test(t.zh||"")),humidifier:t=>t.id==="humid",thought:t=>t.id==="thought",wind_down:t=>t.id==="wind",
+ eye_drops:t=>/眼药水/.test(t.zh||""),tcm:t=>/中药/.test(t.zh||""),checkin:t=>t.id==="checkin"};
+const WEAVE={morning:["sunlight","meds","breathing","dream_log"],evening:["humidifier","breathing","thought","wind_down"]};
+let SOUND=true;try{SOUND=localStorage.getItem("pp_sound")!=="0"}catch(e){}
+let AC=null;
+function tone(freqs,dur){if(!SOUND)return;try{AC=AC||new (window.AudioContext||window.webkitAudioContext)();if(AC.state==="suspended")AC.resume();
+  let t0=AC.currentTime;freqs.forEach((f,i)=>{const o=AC.createOscillator(),g=AC.createGain();o.type="sine";o.frequency.value=f;o.connect(g);g.connect(AC.destination);
+  const st=t0+i*(dur||.16);g.gain.setValueAtTime(0,st);g.gain.linearRampToValueAtTime(.18,st+.02);g.gain.exponentialRampToValueAtTime(.001,st+(dur||.16)*1.6);o.start(st);o.stop(st+(dur||.16)*1.7)})}catch(e){}}
+const chimeStart=()=>tone([660,880],.14),chimeUp=()=>tone([880,660,880],.18),chimeDone=()=>tone([523,659,784,1047],.13),tick=()=>tone([1200],.05);
+function fmtSecs(n){n=Math.max(0,Math.round(n));return Math.floor(n/60)+":"+String(n%60).padStart(2,"0")}
+function fmtLen(secs){return secs<120&&secs%60?t("r_sec",{n:secs}):t("r_min",{n:Math.round(secs/60*10)/10})}
+function stepTask(st){const f=LINK[st.key];if(!f)return null;return todayPlan().find(tk=>f(tk))||null}
+function needOf(tk){return /各一次|两次|早晚|twice|morning and night/i.test((tk.zh||"")+(tk.en||""))?2:1}
+function bumpTask(tk){if(!tk||doneSet(ST.today).has(tk.id))return;const k="pp_c_"+ST.today+"_"+tk.id;let n=0;try{n=+(localStorage.getItem(k)||0)+1;localStorage.setItem(k,String(n))}catch(e){n=99}
+  if(n>=needOf(tk))completeIfPlanned(tk.id);else toast("⭐ "+(L==="zh"?"今天第1次完成，晚上再来一次就能打勾":"First one today. Once more later to tick it off"))}
+function runsToday(id){return (ST.routine_runs||[]).some(r=>r.routine_id===id&&r.day===ST.today&&r.done>0)}
+function routineQuick(){
+  const rs=(ST.routines||[]).filter(r=>r.slot!=="custom");if(!rs.length)return"";const hr=new Date().getHours();
+  const order=hr>=16?rs.slice().sort((a,b)=>(a.slot==="evening"?-1:1)):rs;
+  return `<div class="card"><h2>${t("r_quick")}</h2>${order.map(r=>`<div class="rcard"><span class="em">${esc(r.emoji||"🔁")}</span><div class="meta"><b>${esc(L==="zh"?r.name_zh:(r.name_en||r.name_zh))}</b><small>${runsToday(r.id)?t("r_done_today"):(r.steps||[]).map(x=>x.emoji||"✨").join(" ")}</small></div><button class="go" data-rstart="${r.id}">▶ ${t("r_start")}</button></div>`).join("")}</div>`;
+}
+let RUN=null;
+function buildRun(r){
+  const steps=(r.steps||[]).map(x=>Object.assign({},x));
+  const plan=todayPlan(),done=doneSet(ST.today);
+  (WEAVE[r.slot]||[]).forEach(key=>{
+    if(steps.some(x=>x.key===key))return;
+    if(key==="dream_log"){if(!(ST.dreams||[]).some(d=>d.day===ST.today))steps.push(Object.assign({},RLIBM.dream_log,{optional:true}));return}
+    const f=LINK[key];const tk=plan.find(x=>f&&f(x)&&!done.has(x.id));if(!tk)return;
+    const st=Object.assign({},RLIBM[key],{today:true});if(key==="breathing")st.secs=breathMinutes(tk)*60;
+    const end=steps.findIndex(x=>x.key==="checkin"||x.key==="lights_out");if(end>=0)steps.splice(end,0,st);else steps.push(st);
+  });
+  steps.forEach(x=>{const tk=stepTask(x);if(tk&&!doneSet(ST.today).has(tk.id))x.today=true});
+  return {r,steps,i:0,left:steps.length?steps[0].secs:0,paused:false,doneN:0,t0:Date.now(),iv:null,lastTick:0,hidden:false};
+}
+function startRoutine(id){
+  const r=(ST.routines||[]).find(x=>x.id===id);if(!r||!(r.steps||[]).length)return;
+  closeSheet();RUN=buildRun(r);keepAwake(true);document.getElementById("routine").classList.add("on");chimeStart();drawRun();
+  RUN.iv=setInterval(()=>{if(!RUN||RUN.paused||RUN.hidden)return;RUN.left-=1;
+    if(RUN.left===3||RUN.left===2||RUN.left===1)tick();if(RUN.left===0){chimeUp();buzz()}drawRun(true)},1000);
+}
+function drawRun(timerOnly){
+  const el=document.getElementById("routine"),R=RUN;if(!R)return;const st=R.steps[R.i];if(!st)return;
+  const total=Math.max(1,st.secs),frac=R.left>0?R.left/total:0,C=2*Math.PI*46;
+  if(timerOnly&&el.querySelector("#rtime")){const tm=el.querySelector("#rtime");tm.textContent=R.left>=0?fmtSecs(R.left):"+"+fmtSecs(-R.left);tm.classList.toggle("over",R.left<0);
+    el.querySelector("#rarc").style.strokeDashoffset=String(C*(1-frac));const hint=el.querySelector("#rhint");if(hint)hint.textContent=R.left<=0?t("r_timeup"):"";return}
+  const nm=x=>esc(L==="zh"?x.zh:(x.en||x.zh)),nx=R.steps[R.i+1];
+  const special=st.key==="breathing"?t("r_breath"):st.key==="checkin"?t("r_ck"):st.key==="dream_log"?t("r_dream"):null;
+  el.innerHTML=`<div class="rhead"><span style="font-size:1.4rem">${esc(R.r.emoji||"🔁")}</span><span>${esc(L==="zh"?R.r.name_zh:(R.r.name_en||R.r.name_zh))}</span><span style="color:var(--muted);font-weight:600">${R.i+1}/${R.steps.length}</span>
+     <button class="x" id="rsnd" aria-label="sound">${SOUND?t("r_sound_on"):t("r_sound_off")}</button><button class="x" id="rclose" aria-label="close" style="margin-left:0">✕</button></div>
+   <div class="segs">${R.steps.map((x,k)=>`<i class="${k<R.i?"d":k===R.i?"c":""}"></i>`).join("")}</div>
+   <div class="rmain"><div class="dial pulse"><svg viewBox="0 0 100 100"><circle cx="50" cy="50" r="46" fill="none" stroke="var(--line)" stroke-width="6"/><circle id="rarc" cx="50" cy="50" r="46" fill="none" stroke="var(--pink)" stroke-width="6" stroke-linecap="round" stroke-dasharray="${C}" stroke-dashoffset="${C*(1-frac)}" style="transition:stroke-dashoffset 1s linear"/></svg><span class="em">${esc(st.emoji||"✨")}</span></div>
+     ${st.today?`<span class="star">${t("r_today")}</span>`:st.optional?`<span class="star" style="background:var(--lilac);color:#fff">${t("r_optional")}</span>`:""}
+     <div class="sname">${nm(st)}</div><div class="stime" id="rtime">${fmtSecs(R.left)}</div><div class="next" id="rhint"></div>
+     <div class="next">${nx?t("r_next")+(nx.emoji||"✨")+" "+nm(nx):t("r_last")}</div></div>
+   ${special?`<button class="btn" id="rspecial">${special}</button><button class="btn alt" id="rdone" style="margin-top:8px">${t("r_doneb")}</button>`:`<button class="btn mint" id="rdone">${t("r_doneb")}</button>`}
+   <div class="ctrl"><button class="btn alt" id="rpause">${R.paused?t("r_resume"):t("r_pause")}</button><button class="btn alt" id="rplus">${t("r_plus")}</button><button class="btn alt" id="rskip">${t("r_skip")}</button></div>`;
+  const q=id=>el.querySelector("#"+id);
+  q("rdone").onclick=()=>stepDone(true);q("rskip").onclick=()=>stepDone(false);
+  q("rpause").onclick=()=>{R.paused=!R.paused;drawRun()};q("rplus").onclick=()=>{R.left=Math.max(R.left,0)+60;st.secs=Math.max(st.secs,R.left);drawRun()};
+  q("rsnd").onclick=()=>{SOUND=!SOUND;try{localStorage.setItem("pp_sound",SOUND?"1":"0")}catch(e){};if(SOUND)chimeStart();drawRun()};
+  q("rclose").onclick=quitRoutine;
+  const sp=q("rspecial");if(sp)sp.onclick=()=>{
+    if(st.key==="breathing"){R.hidden=true;el.classList.remove("on");const tk=stepTask(st);startBreath(Math.max(1,Math.round(st.secs/60)),tk,done=>{R.hidden=false;el.classList.add("on");if(done)stepDone(true,true);else drawRun()})}
+    else if(st.key==="checkin"){R.hidden=true;el.classList.remove("on");openCheckin(()=>{R.hidden=false;el.classList.add("on");stepDone(true,true)})}
+    else if(st.key==="dream_log"){R.hidden=true;el.classList.remove("on");openDreamLog(()=>{R.hidden=false;el.classList.add("on");stepDone(true,true)})}};
+}
+function routineSheetClosed(){if(RUN&&RUN.hidden&&!document.getElementById("breath").classList.contains("on")){RUN.hidden=false;CK_CB=null;DL_CB=null;document.getElementById("routine").classList.add("on");drawRun()}}
+function stepDone(did,handled){
+  const R=RUN;if(!R)return;const st=R.steps[R.i];
+  if(did){R.doneN++;buzz();if(!handled){const tk=stepTask(st);if(tk){if(st.key==="breathing"){let have=0;try{have=+(localStorage.getItem(breathKey(tk))||0)+1;localStorage.setItem(breathKey(tk),String(have))}catch(e){have=9}if(have>=breathNeeded(tk))completeIfPlanned(tk.id);else toast(t("b_once"))}else bumpTask(tk)}}
+    if(!handled&&st.key==="checkin"){R.hidden=true;document.getElementById("routine").classList.remove("on");openCheckin(()=>{R.hidden=false;document.getElementById("routine").classList.add("on");advance()});return}}
+  advance();
+}
+function advance(){const R=RUN;R.i++;if(R.i>=R.steps.length)return finishRoutine();R.left=R.steps[R.i].secs;R.paused=false;chimeStart();drawRun()}
+function quitRoutine(){
+  const el=document.getElementById("routine"),R=RUN;R.paused=true;
+  el.innerHTML=`<div class="rmain"><div class="bigpig" style="width:110px;height:110px">${pigSVG()}</div><h2 style="justify-content:center">${t("r_quit")}</h2>
+    <button class="btn" id="qno" style="max-width:320px">${t("r_quit_no")}</button><button class="btn alt" id="qyes" style="max-width:320px;margin-top:10px">${t("r_quit_yes")}</button></div>`;
+  el.querySelector("#qno").onclick=()=>{R.paused=false;drawRun()};
+  el.querySelector("#qyes").onclick=()=>{RUN=null;clearInterval(R.iv);keepAwake(false);el.classList.remove("on");
+    if(R.doneN>0)rpc("care_routine_done",{p_id:R.r.id,p_done:R.doneN,p_total:R.steps.length,p_seconds:Math.round((Date.now()-R.t0)/1000)}).then(()=>{(ST.routine_runs=ST.routine_runs||[]).push({routine_id:R.r.id,day:ST.today,done:R.doneN,total:R.steps.length});render()}).catch(()=>{});
+    render()};
+}
+function finishRoutine(){
+  const R=RUN;RUN=null;clearInterval(R.iv);keepAwake(false);document.getElementById("routine").classList.remove("on");
+  const secs=Math.round((Date.now()-R.t0)/1000);chimeDone();confetti();hearts(16,["⭐","🐷","✨",R.r.emoji||"🔁"]);
+  rpc("care_routine_done",{p_id:R.r.id,p_done:R.doneN,p_total:R.steps.length,p_seconds:secs}).then(()=>{(ST.routine_runs=ST.routine_runs||[]).push({routine_id:R.r.id,day:ST.today,done:R.doneN,total:R.steps.length});render()}).catch(()=>{});
+  const p=document.getElementById("party");
+  p.innerHTML=`<div class="box"><div class="bigpig">${pigSVG()}</div><h3>${esc(R.r.emoji||"")} ${t("r_finish")}</h3><p style="margin:0;color:var(--muted)">${t("r_finish_sub",{n:R.doneN,m:Math.max(1,Math.round(secs/60))})}</p><p style="font-weight:800;color:var(--pink);font-size:1.2rem">+15 XP ⭐</p><button class="btn" id="rok" style="margin-top:12px">${t("close")}</button></div>`;
+  p.classList.add("on");document.getElementById("rok").onclick=()=>{p.classList.remove("on");afterChange()};
+}
+
+/* routine list + editor */
+function openRoutineList(){
+  const rs=ST.routines||[];
+  openSheet(`<h2>🔁 ${t("r_title")}</h2><p style="color:var(--muted);margin:0 0 12px;font-size:.9rem">${t("r_sub")}</p>`+
+   rs.map(r=>{const secs=(r.steps||[]).reduce((a,b)=>a+(b.secs||0),0);return `<div class="rcard"><span class="em">${esc(r.emoji||"🔁")}</span><div class="meta"><b>${esc(L==="zh"?r.name_zh:(r.name_en||r.name_zh))}</b><small>${(r.steps||[]).length} · ${fmtLen(secs)} · ${(r.steps||[]).map(x=>x.emoji||"✨").join("")}</small></div><button class="ed" data-redit="${r.id}" aria-label="${t("r_edit")}">✏️</button><button class="go" data-rstart="${r.id}">▶</button></div>`}).join("")+
+   `<button class="btn alt" id="rnew" style="margin-top:6px">${t("r_new")}</button>`);
+  const sh=document.getElementById("sheet");
+  sh.querySelectorAll("[data-rstart]").forEach(b=>b.onclick=()=>startRoutine(+b.dataset.rstart));
+  sh.querySelectorAll("[data-redit]").forEach(b=>b.onclick=()=>openRoutineEditor(+b.dataset.redit));
+  sh.querySelector("#rnew").onclick=()=>openRoutineEditor(null);
+}
+function openRoutineEditor(id){
+  const orig=(ST.routines||[]).find(r=>r.id===id);
+  const E={id:orig?orig.id:null,slot:orig?orig.slot:"custom",name:orig?orig.name_zh:t("r_newname"),emoji:orig?orig.emoji:"🐷",steps:JSON.parse(JSON.stringify(orig?orig.steps:[])),lib:false,own:false};
+  const EMO=["🌅","🌙","🔁","☀️","🛁","💪","🧹","🎀","🐷","🌸","✨","🍵"];
+  const draw=()=>{
+    const total=E.steps.reduce((a,b)=>a+(b.secs||0),0);
+    let h=`<h2>${orig?"✏️":"✨"} ${esc(E.name)}</h2>
+     <div class="q"><div class="ql">${t("r_name")}</div><input type="text" id="ren" maxlength="20" value="${esc(E.name)}"></div>
+     <div class="ql">${t("r_icon")}</div><div class="emopick">${EMO.map(e=>`<button data-emo="${e}" class="${E.emoji===e?"on":""}">${e}</button>`).join("")}</div>
+     <div class="ql">${t("r_steps")} · ${fmtLen(total)}</div>`;
+    E.steps.forEach((x,i)=>{h+=`<div class="srow"><span class="em">${esc(x.emoji||"✨")}</span><span class="nm">${esc(L==="zh"?x.zh:(x.en||x.zh))}</span>
+      <button class="ib" data-dn="${i}" aria-label="shorter">−</button><span class="tm">${fmtLen(x.secs)}</span><button class="ib" data-up="${i}" aria-label="longer">+</button>
+      <button class="ib" data-mu="${i}" aria-label="move up" ${i===0?"disabled":""}>↑</button><button class="ib" data-md="${i}" aria-label="move down" ${i===E.steps.length-1?"disabled":""}>↓</button><button class="ib" data-rm="${i}" aria-label="remove">✕</button></div>`});
+    h+=`<div class="row" style="margin-top:10px"><button class="btn alt" id="rlib" style="flex:1">${t("r_add_lib")}</button><button class="btn alt" id="rown" style="flex:1">${t("r_add_own")}</button></div>`;
+    if(E.lib)h+=`<div class="libgrid">${RLIB.map(r=>`<button data-lib="${r[0]}"><span class="e">${r[1]}</span>${esc(L==="zh"?r[2]:r[3])}</button>`).join("")}</div>`;
+    if(E.own)h+=`<div class="q" style="margin-top:10px"><div class="ql">${t("r_own_name")}</div><div class="row"><input type="text" id="oe" maxlength="4" placeholder="✨" style="flex:0 0 60px;text-align:center"><input type="text" id="on" maxlength="20"></div>
+      <div class="ql" style="margin-top:8px">${t("r_own_min")}</div><div class="opts" style="display:grid;gap:8px;grid-template-columns:repeat(5,minmax(0,1fr))">${[1,2,3,5,10].map(m=>`<button class="opt${m===2?" on":""}" data-om="${m}">${m}</button>`).join("")}</div>
+      <button class="btn mint" id="oadd" style="margin-top:10px">${t("r_add")}</button></div>`;
+    h+=`<button class="btn" id="rsave" style="margin-top:14px">${t("r_save")}</button>${E.slot==="custom"&&E.id?`<button class="btn alt" id="rdel" style="margin-top:10px">${t("r_delete")}</button>`:""}`;
+    openSheet(h);const sh=document.getElementById("sheet");
+    sh.querySelector("#ren").oninput=e=>E.name=e.target.value;
+    sh.querySelectorAll("[data-emo]").forEach(b=>b.onclick=()=>{E.emoji=b.dataset.emo;draw()});
+    const step=v=>v<120?30:60;
+    sh.querySelectorAll("[data-dn]").forEach(b=>b.onclick=()=>{const x=E.steps[+b.dataset.dn];x.secs=Math.max(10,x.secs-step(x.secs-1));draw()});
+    sh.querySelectorAll("[data-up]").forEach(b=>b.onclick=()=>{const x=E.steps[+b.dataset.up];x.secs=Math.min(3600,x.secs+step(x.secs));draw()});
+    sh.querySelectorAll("[data-mu]").forEach(b=>b.onclick=()=>{const i=+b.dataset.mu;if(i>0){[E.steps[i-1],E.steps[i]]=[E.steps[i],E.steps[i-1]];draw()}});
+    sh.querySelectorAll("[data-md]").forEach(b=>b.onclick=()=>{const i=+b.dataset.md;if(i<E.steps.length-1){[E.steps[i+1],E.steps[i]]=[E.steps[i],E.steps[i+1]];draw()}});
+    sh.querySelectorAll("[data-rm]").forEach(b=>b.onclick=()=>{E.steps.splice(+b.dataset.rm,1);draw()});
+    sh.querySelector("#rlib").onclick=()=>{E.lib=!E.lib;E.own=false;draw()};sh.querySelector("#rown").onclick=()=>{E.own=!E.own;E.lib=false;draw()};
+    sh.querySelectorAll("[data-lib]").forEach(b=>b.onclick=()=>{E.steps.push(Object.assign({},RLIBM[b.dataset.lib]));buzz();toast("+ "+(RLIBM[b.dataset.lib].emoji));draw()});
+    if(E.own){let om=2;sh.querySelectorAll("[data-om]").forEach(b=>b.onclick=()=>{om=+b.dataset.om;sh.querySelectorAll("[data-om]").forEach(o=>o.classList.toggle("on",o===b))});
+      sh.querySelector("#oadd").onclick=()=>{const nm=sh.querySelector("#on").value.trim();if(!nm)return;const em=sh.querySelector("#oe").value.trim();
+        E.steps.push({key:"custom",emoji:em||"✨",zh:nm,en:"",secs:om*60,needs_emoji:!em});E.own=false;draw()}}
+    sh.querySelector("#rsave").onclick=async()=>{if(!E.steps.length){toast(t("r_empty"));return}const b=sh.querySelector("#rsave");b.disabled=true;
+      try{const nid=await rpc("care_routine_save",{p_id:E.id,p_slot:E.slot,p_name_zh:(E.name||t("r_newname")).trim(),p_emoji:E.emoji,p_steps:E.steps});
+        const row={id:nid,slot:E.slot,name_zh:(E.name||t("r_newname")).trim(),name_en:orig?orig.name_en:null,emoji:E.emoji,steps:E.steps.map(x=>Object.assign({},x))};
+        ST.routines=(ST.routines||[]).filter(r=>r.id!==nid);ST.routines.push(row);toast(t("r_saved"));render();openRoutineList()}catch(e){toast(t("net"));b.disabled=false}};
+    const del=sh.querySelector("#rdel");if(del)del.onclick=async()=>{try{await rpc("care_routine_delete",{p_id:E.id});ST.routines=(ST.routines||[]).filter(r=>r.id!==E.id);render();openRoutineList()}catch(e){toast(t("net"))}};
+  };
+  draw();
+}
+
+/* ---------- dream journal ---------- */
+function rot(key){const arr=t(key);const n=(ST.dreams||[]).length+(ST.today||0)*3;return arr[n%arr.length]}
+function viewDreams(){
+  const s=stats(),ds=ST.dreams||[];
+  let h=header(s)+`<button class="tool nightsky" data-tool="dreamlog"><span class="em">🌙</span><span><b>${esc(rot("d_prompts"))}</b><small class="sub2" style="color:#D9CCF5">💡 ${esc(rot("d_tips"))}</small></span></button>
+   <div class="card"><h2>📖 ${t("d_title")}<span class="count">${ds.length}</span></h2><p style="margin:0 0 12px;color:var(--muted);font-size:.85rem">${t("d_priv")}</p>`;
+  if(!ds.length)h+=`<p style="color:var(--muted)">${t("d_none")}</p>`;
+  ds.forEach(d=>{const when=new Date(d.at);const ttl=d.title||(d.analysis&&d.analysis.zh&&d.analysis.zh.title)||String(d.body).slice(0,24);
+    h+=`<button class="dream" data-dream="${d.id}"><div class="dt">${t("day",{n:d.day||"?"})} · ${when.toLocaleDateString()}</div><div class="dh">${d.nightmare?"😱 ":d.lucid?"💡 ":"🌙 "}${esc(ttl)}</div><div class="dp">${esc(d.body)}</div>
+      ${(d.feelings||[]).slice(0,4).map(f=>`<span class="pill2">${esc(f)}</span>`).join("")}<span class="pill2${d.status==="done"?" ok":""}">${d.status==="done"?t("d_ready"):t("d_pending")}</span></button>`});
+  return h+`</div>`;
+}
+let DL_CB=null;
+function openDreamLog(cb){DL_CB=cb||null;
+  const F=t("d_feelings"),sel=new Set();let vivid=3,night=false,lucid=false;
+  openSheet(`<h2>🌙 ${esc(rot("d_prompts"))}</h2><div class="help" style="margin-top:0">💡 ${esc(rot("d_tips"))}</div>
+    <textarea id="dbody" maxlength="6000" placeholder="${esc(t("d_body_ph"))}" style="min-height:180px"></textarea>
+    <input type="text" id="dtitle" maxlength="60" placeholder="${esc(t("d_title_ph"))}" style="margin-top:10px">
+    <div class="q" style="margin-top:14px"><div class="ql">${t("d_feel")}</div><div class="chipsel">${F.map(f=>`<button class="opt" data-f="${esc(f)}">${esc(f)}</button>`).join("")}</div></div>
+    <div class="q"><div class="ql">${t("d_vivid")}</div><div class="opts" style="display:grid;gap:8px;grid-template-columns:repeat(5,minmax(0,1fr))">${["☁️","🌫️","🌙","⭐","✨"].map((e,i)=>`<button class="opt face${i===2?" on":""}" data-v="${i+1}">${e}</button>`).join("")}</div></div>
+    <div class="chipsel" style="margin-bottom:14px"><button class="opt" id="dnight">${t("d_night")}</button><button class="opt" id="dlucid">${t("d_lucid")}</button></div>
+    <button class="btn" id="dsave">${t("d_save")}</button>`);
+  const sh=document.getElementById("sheet");
+  sh.querySelectorAll("[data-f]").forEach(b=>b.onclick=()=>{const f=b.dataset.f;sel.has(f)?sel.delete(f):sel.add(f);b.classList.toggle("on",sel.has(f));buzz()});
+  sh.querySelectorAll("[data-v]").forEach(b=>b.onclick=()=>{vivid=+b.dataset.v;sh.querySelectorAll("[data-v]").forEach(o=>o.classList.toggle("on",o===b));buzz()});
+  sh.querySelector("#dnight").onclick=e=>{night=!night;e.currentTarget.classList.toggle("on",night)};
+  sh.querySelector("#dlucid").onclick=e=>{lucid=!lucid;e.currentTarget.classList.toggle("on",lucid)};
+  sh.querySelector("#dsave").onclick=async()=>{
+    const body=sh.querySelector("#dbody").value.trim();if(!body){sh.querySelector("#dbody").focus();return}
+    const b=sh.querySelector("#dsave");b.disabled=true;const title=sh.querySelector("#dtitle").value.trim();
+    let id;try{id=await rpc("care_dream_add",{p_title:title||null,p_body:body,p_feelings:[...sel],p_vivid:vivid,p_nightmare:night,p_lucid:lucid})}catch(e){toast(t("net"));b.disabled=false;return}
+    (ST.dreams=ST.dreams||[]).unshift({id,at:new Date().toISOString(),day:ST.today,title:title||null,body,feelings:[...sel],vivid,nightmare:night,lucid,status:"pending",analysis:null});
+    ping("🌙 She logged a dream",(night?"A nightmare. ":"")+"Open your console to create her dream reading.",night?4:3,"crescent_moon");
+    closeSheet();toast(t("d_saved"));hearts(12,["🌙","⭐","✨","🐷"]);floatXP(innerWidth/2,innerHeight/2,"+10 XP 🌙");render();
+    if(DL_CB){const cb=DL_CB;DL_CB=null;cb(true)}
+  };
+}
+function openDream(id){
+  const d=(ST.dreams||[]).find(x=>x.id===id);if(!d)return;const a=d.analysis&&(d.analysis[L]||d.analysis.zh);
+  let h=`<h2>${d.nightmare?"😱":d.lucid?"💡":"🌙"} ${esc(d.title||(a&&a.title)||t("d_yours"))}</h2><div class="an">
+    <details${a?"":" open"}><summary style="cursor:pointer;color:var(--muted)">${t("d_yours")}</summary><p style="white-space:pre-wrap;margin-top:8px">${esc(d.body)}</p></details>`;
+  if(!a)h+=`<p style="margin-top:14px">${t("d_pending")}</p>`;
+  else{
+    if(a.summary)h+=`<h3>✨ ${t("d_sum")}</h3><p>${esc(a.summary)}</p>`;
+    if(Array.isArray(a.symbols)&&a.symbols.length)h+=`<h3>🔮 ${t("d_sym")}</h3>`+a.symbols.map(x=>`<div class="sym"><strong>${esc(x.name)}</strong><p style="margin:4px 0 0">${esc(x.meaning)}</p></div>`).join("");
+    if(a.emotions)h+=`<h3>💗 ${t("d_emo")}</h3><p>${esc(a.emotions)}</p>`;
+    if(a.waking_life)h+=`<h3>🌤️ ${t("d_wake")}</h3><p>${esc(a.waking_life)}</p>`;
+    if(a.patterns)h+=`<h3>🌌 ${t("d_pat")}</h3><p>${esc(a.patterns)}</p>`;
+    if(Array.isArray(a.questions)&&a.questions.length)h+=`<h3>🤔 ${t("d_q")}</h3>`+a.questions.map(q=>`<p>• ${esc(q)}</p>`).join("");
+    if(a.rescript)h+=`<h3>🖍️ ${t("d_rescript")}</h3><p>${esc(a.rescript)}</p>`;
+    if(a.suggestion)h+=`<h3>🐷 ${t("d_sug")}</h3><p>${esc(a.suggestion)}</p>`;
+  }
+  openSheet(h+`</div><button class="btn alt" id="dclose" style="margin-top:12px">${t("close")}</button>`);
+  document.getElementById("dclose").onclick=closeSheet;
+}
+
+/* ---------- tools ---------- */
+function viewTools(){
+  const s=stats();
+  const T=[["routines","🔁",t("r_title"),t("r_sub")],["breath","🌬️",t("t_breath"),t("t_breath_s")],["sos","🆘",t("t_sos"),t("t_sos_s")],["thought","✍️",t("t_thought"),t("t_thought_s")],["worry","⏳",t("t_worry"),t("t_worry_s")],["msg","💌",t("t_msg"),t("t_msg_s")]];
+  return header(s)+`<div class="card"><h2>🧰 ${t("t_title")}</h2><p style="margin:0 0 12px;color:var(--muted);font-size:.92rem">${t("t_sub")}</p>`+
+    T.map(([k,e,n,d])=>`<button class="tool" data-tool="${k}"><span class="em">${e}</span><span><b>${n}</b><small>${d}</small></span></button>`).join("")+`</div>`;
+}
+function openTool(k){
+  if(k==="breath")return openBreathLauncher(null);
+  if(k==="msg")return openMessage();
+  if(k==="dreamlog")return openDreamLog();
+  if(k==="routines")return openRoutineList();
+  if(k==="sos"){openSheet(`<h2>🆘 ${t("t_sos")}</h2><ol class="steps">${t("sos_steps").map(x=>`<li>${x}</li>`).join("")}</ol>
+     <button class="btn" id="sosb">${t("sos_breathe")}</button><button class="btn alt" id="sosm" style="margin-top:10px">${t("msg_btn")}</button><div class="help">${t("sos_help")}</div>`);
+    const sh=document.getElementById("sheet");sh.querySelector("#sosb").onclick=()=>{closeSheet();startBreath(1,null)};sh.querySelector("#sosm").onclick=openMessage;return}
+  if(k==="thought"){
+    let list=[];try{list=JSON.parse(localStorage.getItem("pp_thoughts")||"[]")}catch(e){}
+    openSheet(`<h2>✍️ ${t("t_thought")}</h2><p style="color:var(--muted);font-size:.85rem;margin:0 0 10px">${t("th_priv")}</p>
+      <div class="q"><div class="ql">${t("th_what")}</div><textarea id="thw" maxlength="300"></textarea></div>
+      <div class="q"><div class="ql">${t("th_thought")}</div><textarea id="tht" maxlength="300"></textarea></div>
+      <div class="q"><div class="ql">${t("th_calm")}</div><textarea id="thc" maxlength="300"></textarea></div>
+      <button class="btn" id="ths">${t("th_save")}</button>
+      ${list.length?`<h2 style="margin-top:18px">${t("th_list")}</h2>`+list.slice(-10).reverse().map(x=>`<div class="titem" style="display:block;margin-bottom:8px"><div style="font-size:.78rem;color:var(--muted)">${esc(x.d)}</div><div>💭 ${esc(x.t)}</div><div>🌿 ${esc(x.c)}</div></div>`).join(""):""}`);
+    const sh=document.getElementById("sheet");
+    sh.querySelector("#ths").onclick=()=>{const w=sh.querySelector("#thw").value.trim(),th=sh.querySelector("#tht").value.trim(),c=sh.querySelector("#thc").value.trim();if(!th||!c){toast("💭 + 🌿");return}
+      list.push({d:new Date().toLocaleDateString(),w,t:th,c});try{localStorage.setItem("pp_thoughts",JSON.stringify(list.slice(-60)))}catch(e){}
+      closeSheet();toast(t("th_saved"));hearts(8,["✍️","🌿","🐷"]);completeIfPlanned("thought")};return}
+  if(k==="worry"){
+    openSheet(`<h2>⏳ ${t("w_title")}</h2><p>${t("w_how")}</p><div class="big-time" id="wt">10:00</div><button class="btn" id="wgo">${t("w_start")}</button><button class="btn alt" id="wstop" style="margin-top:10px;display:none">${t("b_stop")}</button>`);
+    const sh=document.getElementById("sheet");let left=600,iv=null;
+    const draw=()=>{sh.querySelector("#wt").textContent=String(Math.floor(left/60)).padStart(2,"0")+":"+String(left%60).padStart(2,"0")};
+    sh.querySelector("#wgo").onclick=()=>{sh.querySelector("#wgo").style.display="none";sh.querySelector("#wstop").style.display="block";keepAwake(true);
+      iv=setInterval(()=>{left--;draw();if(left<=0){clearInterval(iv);keepAwake(false);closeSheet();toast(t("w_done"));hearts(8,["✅","🐷"]);completeIfPlanned("worry")}},1000)};
+    sh.querySelector("#wstop").onclick=()=>{clearInterval(iv);keepAwake(false);closeSheet()};
+    document.getElementById("scrim").onclick=()=>{clearInterval(iv);keepAwake(false);closeSheet()};return}
+}
+function completeIfPlanned(id){
+  const tk=todayPlan().find(x=>x.id===id);if(!tk||doneSet(ST.today).has(id))return;
+  setLog(ST.today,id,true);rpc("care_set_task",{p_day:ST.today,p_task:id,p_done:true}).then(()=>afterChange()).catch(()=>{setLog(ST.today,id,false);toast(t("net"));render()});
+  floatXP(innerWidth/2,innerHeight/2,"+10 XP ⭐");render();
+}
+
+/* ---------- messages + hugs from Joel ---------- */
+function openMessage(){
+  openSheet(`<h2>💌 ${t("msg_title")}</h2><textarea id="mtxt" maxlength="1000" placeholder="${esc(t("msg_ph"))}" style="min-height:140px"></textarea><button class="btn" id="msend" style="margin-top:12px">${t("msg_send")}</button>`);
+  const sh=document.getElementById("sheet");
+  sh.querySelector("#msend").onclick=async()=>{const v=sh.querySelector("#mtxt").value.trim();if(!v)return;const b=sh.querySelector("#msend");b.disabled=true;
+    try{await rpc("care_send",{p_kind:"message",p_body:v})}catch(e){toast(t("net"));b.disabled=false;return}
+    ping("💌 A message from her","She sent you a message in the app. Open your console to read it.",4,"love_letter");closeSheet();toast(t("msg_sent"));hearts(10,["💌","💕","🐷"])};
+}
+function checkJoelHugs(){
+  const ids=(ST.joel_hugs||[]);if(!ids.length)return;const max=Math.max(...ids);let seen=0;try{seen=+(localStorage.getItem("pp_jh")||0)}catch(e){}
+  if(max>seen){try{localStorage.setItem("pp_jh",String(max))}catch(e){};if(seen===0&&ids.length>3)return;setTimeout(()=>{hearts(24,["🫂","💕","💗","🐷","💖"]);toast(t("joel_hug"));buzz()},600)}
+}
+
+/* ---------- breathing ---------- */
+function isBreathTask(tk){return /^breathe|^wait$/.test(tk.id)||/呼吸/.test(tk.zh||"")&&tk.id!=="rest"}
+function breathMinutes(tk){if(!tk)return 3;if(tk.id==="wait")return 3;const m=(tk.id.match(/(\d+)/)||[])[1]||((tk.zh||"").match(/(\d+)\s*分钟/)||[])[1];return m?Math.min(15,Math.max(1,+m)):5}
+function breathNeeded(tk){return tk&&/各一次|两次|twice/.test((tk.zh||"")+(tk.en||""))?2:1}
+function breathKey(tk){return "pp_b_"+ST.today+"_"+(tk?tk.id:"x")}
+function openBreathLauncher(tk){
+  const mins=breathMinutes(tk),need=breathNeeded(tk);let have=0;try{have=+(localStorage.getItem(breathKey(tk))||0)}catch(e){}
+  openSheet(`<h2>🌬️ ${t("b_title")}</h2><p style="color:var(--muted);margin:0 0 12px">${t("b_hint")}</p>
+   ${tk?`<p style="margin:0 0 12px"><strong>${esc(L==="zh"?tk.zh:(tk.en||tk.zh))}</strong>${need>1?` · ${have}/${need}`:""}</p>`:""}
+   <div class="ql" style="margin-bottom:8px">${t("b_choose")}</div>
+   <div class="opts" style="display:grid;gap:8px;grid-template-columns:repeat(4,minmax(0,1fr))">${[1,3,5,10].map(m=>`<button class="opt${m===mins?" on":""}" data-m="${m}">${t("b_min",{n:m})}</button>`).join("")}</div>
+   <button class="btn" id="bgo" style="margin-top:16px">${t("b_start")}</button>${tk?`<button class="btn alt" id="bmark" style="margin-top:10px">${t("b_mark")}</button>`:""}`);
+  const sh=document.getElementById("sheet");let pick=mins;
+  sh.querySelectorAll("[data-m]").forEach(b=>b.onclick=()=>{pick=+b.dataset.m;sh.querySelectorAll("[data-m]").forEach(o=>o.classList.toggle("on",o===b))});
+  sh.querySelector("#bgo").onclick=()=>{closeSheet();startBreath(pick,tk)};
+  const mk=sh.querySelector("#bmark");if(mk)mk.onclick=()=>{closeSheet();completeIfPlanned(tk.id)};
+}
+let wakeLock=null;
+async function keepAwake(on){try{if(on&&navigator.wakeLock){wakeLock=await navigator.wakeLock.request("screen")}else if(!on&&wakeLock){await wakeLock.release();wakeLock=null}}catch(e){}}
+function startBreath(mins,tk,onEnd){
+  const el=document.getElementById("breath");const IN=4000,OUT=6000,CYC=IN+OUT,total=mins*60000;
+  el.innerHTML=`<div style="font-weight:700;color:var(--muted)">${t("b_title")} · ${t("b_min",{n:mins})}</div>
+    <div class="orb"><div class="orbring" id="bring"></div><div class="pigc">${pigSVG()}</div></div>
+    <div class="bphase" id="bph"></div><div class="bcount" id="bct"></div><div class="btime" id="btm"></div>
+    <div class="brow"><button class="btn alt" id="bpause">${t("b_pause")}</button><button class="btn alt" id="bstop">${t("b_stop")}</button></div>`;
+  el.classList.add("on");keepAwake(true);
+  const ring=el.querySelector("#bring"),ph=el.querySelector("#bph"),ct=el.querySelector("#bct"),tm=el.querySelector("#btm");
+  const reduce=matchMedia("(prefers-reduced-motion: reduce)").matches;
+  let elapsed=0,last=performance.now(),paused=false,raf=0,lastPhase="";
+  const ease=x=>.5-Math.cos(Math.PI*x)/2;
+  const frame=now=>{
+    if(!paused)elapsed+=now-last;last=now;
+    const c=elapsed%CYC,inhale=c<IN,p=inhale?c/IN:(c-IN)/OUT;
+    const sc=inhale?.55+.45*ease(p):1-.45*ease(p);
+    ring.style.transform=`scale(${reduce?(inhale?1:.7):sc})`;
+    const phase=inhale?"in":"out";if(phase!==lastPhase){lastPhase=phase;ph.textContent=inhale?t("b_in"):t("b_out");buzz()}
+    ct.textContent=String(Math.ceil(inhale?(IN-c)/1000:(CYC-c)/1000));
+    const left=Math.max(0,total-elapsed);tm.textContent=`${Math.floor(left/60000)}:${String(Math.floor(left%60000/1000)).padStart(2,"0")} ${t("b_left")}`;
+    if(elapsed>=total){finish(true);return}
+    raf=requestAnimationFrame(frame);
+  };
+  const finish=done=>{cancelAnimationFrame(raf);keepAwake(false);el.classList.remove("on");
+    if(onEnd)setTimeout(()=>onEnd(done),0);
+    if(!done)return;
+    if(tk){const need=breathNeeded(tk);let have=0;try{have=+(localStorage.getItem(breathKey(tk))||0)+1;localStorage.setItem(breathKey(tk),String(have))}catch(e){have=need}
+      if(have>=need){toast(t("b_done"));confetti();hearts(12,["🌬️","🐷","✨"]);completeIfPlanned(tk.id)}else{toast(t("b_once"));hearts(8,["🌬️","⭐"])}}
+    else{toast(t("b_done"));hearts(10,["🌬️","🐷","✨"])}
+  };
+  el.querySelector("#bpause").onclick=e=>{paused=!paused;e.target.textContent=paused?t("b_resume"):t("b_pause")};
+  el.querySelector("#bstop").onclick=()=>finish(false);
+  raf=requestAnimationFrame(frame);
+}
+
+/* ---------- badges ---------- */
+function getSeen(){try{return JSON.parse(localStorage.getItem("pp_seen")||"[]")}catch(e){return []}}
+function checkNewBadges(){
+  const s=stats(),seen=new Set(getSeen()),fresh=BADGES.filter(b=>b.ok(s)&&!seen.has(b.id));
+  if(!fresh.length)return;
+  fresh.forEach(b=>seen.add(b.id));try{localStorage.setItem("pp_seen",JSON.stringify([...seen]))}catch(e){}
+  if(!checkNewBadges._init){checkNewBadges._init=true;if(s.tasks===0&&s.checkins===0)return}
+  const b=fresh[0];setTimeout(()=>{toast(`${b.e} ${t("newbadge")} ${L==="zh"?b.zh:b.en}`);hearts(10,[b.e,"✨","🐷"])},500);
+}
+
+/* ---------- boot ---------- */
+async function load(){
+  const app=document.getElementById("app");
+  if(!KEY){app.innerHTML=`<div class="center"><div class="pig" style="margin:0 auto 12px;width:96px;height:96px">${pigSVG()}</div>${t("nolink")}</div>`;return}
+  try{ST=await rpc("care_state",{});}
+  catch(e){app.innerHTML=`<div class="center"><div class="pig" style="margin:0 auto 12px;width:96px;height:96px">${pigSVG("sleepy")}</div>${e.status===403||e.status===401?t("nolink"):t("net")}<br><br><button class="btn alt" id="retry" style="max-width:220px;margin:0 auto">↻</button></div>`;const r=document.getElementById("retry");if(r)r.onclick=load;return}
+  document.getElementById("tabs").hidden=false;setTimeout(checkJoelHugs,300);
+  try{const seen=getSeen();checkNewBadges._init=seen.length>0}catch(e){}
+  render();
+}
+document.querySelectorAll(".tabs button").forEach(b=>b.onclick=()=>{TAB=b.dataset.t;render();scrollTo({top:0,behavior:"smooth"})});
+document.addEventListener("visibilitychange",()=>{if(!document.hidden&&ST)load()});
+load();
+</script>
+</body>
+</html>
