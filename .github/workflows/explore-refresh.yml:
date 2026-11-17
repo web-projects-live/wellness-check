@@ -1,0 +1,30 @@
+name: Explore refresh
+
+# Finds new Zhengzhou ideas for Chloe's Explore tab (events, places, fashion),
+# tuned by her 👍/👎. Runs every 2 days at 08:17 Beijing time (00:17 UTC).
+on:
+  schedule:
+    - cron: "17 0 */2 * *"
+  workflow_dispatch:
+    inputs:
+      force:
+        description: "Run even if it ran recently"
+        type: boolean
+        default: false
+
+jobs:
+  refresh:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - name: Ask Supabase to look for new ideas
+        env:
+          CARE_APP_KEY: ${{ secrets.CARE_APP_KEY }}
+          FORCE: ${{ inputs.force || false }}
+        run: |
+          body=$(jq -n --arg key "$CARE_APP_KEY" --argjson force "$FORCE" '{key:$key,trigger:"schedule",force:$force}')
+          code=$(curl -sS -o out.json -w '%{http_code}' --max-time 240 \
+            -H 'Content-Type: application/json' -d "$body" \
+            https://zskqjwwcyczezouglzmi.supabase.co/functions/v1/explore-refresh)
+          echo "HTTP $code"; jq 'del(.errors)?' out.json || cat out.json
+          test "$code" -lt 300
